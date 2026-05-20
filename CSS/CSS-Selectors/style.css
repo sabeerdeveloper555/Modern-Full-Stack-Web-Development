@@ -10,31 +10,36 @@ h1{
     color: darkblue;
 }
 
-/* Id Selector */
+/* Id Selector — targets ONE unique element with that id. Use # symbol.
+   Like a name tag — only one person in the room has it. */
 #main-title{
     background-color: mistyrose;
     color: darkred;
 }
 
-/* Class Selector */
+/* Class Selector — targets ALL elements with that class. Use . (dot) symbol.
+   Like a uniform — many people can wear the same one. */
 .nav-link{
     background-color: lightyellow;
     color: forestgreen;
 }
 
-/* Descendent Selector */
+/* Descendant Selector — targets elements ANYWHERE inside a parent (any depth).
+   Like saying: all kids and grandkids inside this house. */
 .color-box p{
     background-color: lemonchiffon;
     color: saddlebrown;
 }
 
-/* Child Selector */
+/* Child Selector — targets DIRECT children only (one level deep). Use > symbol.
+   Like saying: only MY kids, not grandkids. */
 .color-box > p{
     background-color: ivory;
     color: goldenrod;
 }
 
-/* Adjacent Selector */
+/* Adjacent Selector — targets the VERY NEXT sibling element. Use + symbol.
+   Like saying: the person sitting right next to me (not anyone else). */
 .intro-paragraph + p{
     background-color: lightcyan;
     color: teal;
