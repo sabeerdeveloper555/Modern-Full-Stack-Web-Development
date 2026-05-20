@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #b9b9b9;
+        }
+        
+    </style>
+</head>
+<body>
+    <table style="width: 100%;">
+        <colgroup>
+            <col span="2" style="background-color: #b9b9b9;" />
+        </colgroup>
+    <tr>
+        <th>Country</th>
+        <th>Country Code</th>
+        <th>Email</th>
+    </tr>        
+
+    <tr>
+        <td>Pakistan</td>
+        <td>PAK</td>
+        <td>pakistan@google.com</td>
+    </tr>
+    <tr>
+        <td>United States of America</td>
+        <td>USA</td>
+        <td>america@google.com</td>
+    </tr>
+    <tr>
+        <td>Canada</td>
+        <td>CAN</td>
+        <td>canada@google.com</td>
+    </tr>
+    <tr>
+        <td>Russia</td>
+        <td>RUS</td>
+        <td>russia@google.com</td>
+    </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th colspan="2">Country</th>
+            <td>Pakistan</td>
+            <td>Russia</td>
+        </tr>
+
+        <tr>
+            <th>Code</th>
+            <td>PAK</td>
+            <td>RUS</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cause", cursive;
+  background-color: #fff;
+}
+
+header {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 0 20px;
+  height: 60px;
+  line-height: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #b9b8b8;
+}
+
+.content {
+  background-color: #f0f0f0;
+  padding: 40px 20px 50px 20px;
+}
+
+.main-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.sub-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #474747;
+  padding-left: 15px;
+}

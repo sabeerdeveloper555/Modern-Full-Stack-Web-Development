@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+    color: #f16507;
+}
+
+p{
+    text-align: center;
+    color: #c207f1;
+    font-size: 20px;
+}
+
+table{
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+thead{
+    background-color: #79f506;
+}
+
+th, td{
+    border: 2px solid #04ff9f;
+    padding: 8px;
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+    margin-top: 20px;
+    color: #f16507;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Practice</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Your Details:</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </fieldset><br>
+
+    <fieldset>
+        <legend>Your Review:</legend>
+        <label for="hear-about-us">How do you hear about us?</label>
+        <select name="hear-about-us" id="hear-about-us">
+            <option value="google">Google</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+            <option value="friends">From Friends</option>
+        </select><br><br>
+        <label for="visit-again">Would you visit again?</label>
+        <input type="radio" name="visit-again" id="visit-again" value="yes">
+        <label for="visit-again">Yes</label>
+        <input type="radio" name="visit-again" id="visit-again-no" value="no">
+        <label for="visit-again-no">No</label>
+        <input type="radio" name="visit-again" id="visit-again-maybe" value="maybe">
+        <label for="visit-again-maybe">Maybe</label> <br><br>
+
+        <label for="comments">Comments:</label>
+        <textarea name="comments" id="comments" rows="4" cols="50"></textarea><br><br>
+
+        <input type="checkbox" id="subscribe" name="subscribe">
+        <label for="subscribe">Sign me up for more updates</label><br>
+
+        <button type="submit">Submit Review</button>
+    </fieldset>
+</body>
+</html>
