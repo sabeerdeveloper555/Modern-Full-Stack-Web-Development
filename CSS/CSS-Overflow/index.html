@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Overflow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>CSS Overflow</h1>
+
+    <div class="overflow-container-1">
+        <p>The CSS overflow property controls what happens to content that is too big to fit into an area. It specifies whether to clip the content or to add scrollbars when the content of an element is too big to fit in the specified area. By default, overflow is set to <code>visible</code>, which means the content renders outside the element's box and may overlap other elements on the page. This is the default browser behavior and can sometimes cause layout issues. When the overflow is set to <code>hidden</code>, any content that exceeds the boundaries of the container is clipped and becomes invisible to the user — this is useful when you want a clean, contained layout. The <code>scroll</code> value forces the browser to always show scrollbars, even if the content fits within the element, giving the user the ability to scroll through overflowing content. The <code>auto</code> value is the most flexible option: the browser will only add scrollbars when the content actually overflows the container. Additionally, CSS provides <code>overflow-x</code> and <code>overflow-y</code> properties that allow you to control overflow behavior independently on the horizontal and vertical axes. For example, you might want content to scroll horizontally but be clipped vertically. Understanding overflow is essential for building clean, predictable layouts — especially when working with fixed-size containers, images, long text, or dynamically generated content that may vary in size at runtime. The overflow property has the following values:</p>
+        <ul>
+            <li><code>visible</code> - The content overflows the element's box without being clipped.</li>
+            <li><code>hidden</code> - The content that overflows the element's box is clipped and not visible.</li>
+            <li><code>scroll</code> - The content that overflows the element's box is clipped, but scrollbars are added
+                to allow the user to view the overflowed content.</li>
+            <li><code>auto</code> - The browser determines whether to clip the content or add scrollbars based on the
+                content and element dimensions.</li>
+        </ul>
+    </div>
+    <div class="overflow-container-2">
+        <p>CSS overflow behavior is deeply tied to the concept of the block formatting context. When an element's overflow is set to anything other than <code>visible</code>, it establishes a new block formatting context, which has significant implications for how its child elements are laid out and how floats interact with the container. For instance, a container with <code>overflow: hidden</code> will fully contain floated children, preventing the classic "float collapse" issue that developers have dealt with for years. The <code>overflow-x</code> property controls horizontal overflow, and setting it to <code>scroll</code> or <code>auto</code> enables horizontal scrolling — commonly used for wide tables, code blocks, or image galleries that exceed the viewport width. Similarly, <code>overflow-y</code> handles vertical overflow independently. It's worth noting that setting one axis to <code>visible</code> while the other is set to a different value is not allowed by the CSS specification — the browser will compute the <code>visible</code> axis as <code>auto</code> in such cases. The newer <code>overflow: clip</code> value works similarly to <code>hidden</code> but does not create a new formatting context, making it a lighter-weight option for simple clipping needs. CSS also introduced the <code>text-overflow</code> property, which works in conjunction with <code>overflow: hidden</code> and <code>white-space: nowrap</code> to display an ellipsis (...) when inline text overflows its container — a widely used pattern for truncating long titles or labels in card-based UI designs. Mastering CSS overflow is crucial for building responsive, accessible, and visually polished web interfaces.</p>
+    </div>
+</body>
+
+</html>
