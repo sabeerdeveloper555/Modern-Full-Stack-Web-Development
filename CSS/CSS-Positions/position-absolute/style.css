@@ -1,0 +1,80 @@
+/** ------------------------------------- -->
+/**  POSITION IN CSS  
+/** ---------------------------------------- --> */
+
+/*? The position property in CSS is used to control the positioning of elements within a web page. It defines how an element should be placed relative to its normal position in the document flow or relative to its parent or containing elements. */
+
+/*? position: relative; */
+/*? Definition: Elements with position: relative; are positioned relative to their normal position in the document flow. */
+
+/*TODO New Properties Unlocked  */
+/*? Properties: top, right, bottom, left: Offset the element from its normal position. */
+
+/*? position: absolute; */
+/*? Definition: Elements with position: absolute; are positioned relative to the nearest positioned ancestor or the initial containing block. */
+
+/** ---------------------------------------- --> */
+
+@import url('https://fonts.googleapis.com/css2?family=Strichpunkt+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Strichpunkt Sans", sans-serif;
+}
+
+
+#main-heading {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.parent-div{
+    width: 500px;
+    height: 500px;
+    position: relative;
+    border: 2px solid rgb(255, 255, 255);
+    left: 500px;
+    background-color: #450693;
+}
+
+.child{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffffff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child-1{
+    top: 5px;
+    left: 5px;
+}
+
+.child-2{
+    top: 5px;
+    right: 5px;
+}
+
+.child-3{
+    bottom: 5px;
+    right: 5px;
+}
+
+.child-4{
+    bottom: 5px;
+    left: 5px;
+}
+
+.child-5{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
