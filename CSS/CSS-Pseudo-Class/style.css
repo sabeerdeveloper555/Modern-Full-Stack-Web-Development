@@ -1,0 +1,224 @@
+/** ------------------------------------- -->
+/** Pseudo Classes in CSS
+/** ---------------------------------------- --> */
+
+/*? 1. Link (`a:link`): This is the default state for an unvisited link. */
+
+/*? 2. Visited (`a:visited`): This state applies to a link that the user has already visited. */
+
+/*? 3. Hover (`a:hover`): This state triggers when the user hovers their mouse pointer over a link. */
+
+/*? 4. Active (`a:active`): This state is triggered when the user clicks on a link. */
+
+/*? 5: :hover - This pseudo-class is used for styling an element when a user hovers their mouse over it. */
+/* a:hover {    color: #A78295; Change text color on hover   } */
+
+/*? 6: :first-child - Selects the first child element of its parent. */
+
+/*? 7: :last-child - Selects the last child element of its parent. */
+
+/*? 8: :nth-child(n) - Selects elements based on their position within a parent element, where "n" is a numeric value. */
+
+/*? 9: :first-of-type - Selects the first element of its type within its parent. */
+
+/*? 10: :last-of-type - Selects the last element of its type within its parent. */
+
+/*? 11: :nth-of-type(n) - Selects elements of a specified type based on their position within a parent. */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    color: azure;
+    height: 100vh;
+}
+
+.hero-section {
+    background-color: #080a0c;
+}
+
+.container {
+    height: 100vh;
+    max-width: 1320px;
+    padding: 64px 0;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+}
+
+.section-elements {
+    padding-bottom: 100px;
+}
+
+.section-elements .container {
+    height: 50vh;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    color: #080a0c;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 6.4rem;
+}
+
+.grid-two-column {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-content h1 {
+    text-align: left;
+    font-size: 54px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 2rem 0 4rem 0;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+.hero-content a {
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px 32px;
+    text-transform: capitalize;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content-1,
+.content-2 {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    font-size: 48px;
+}
+
+/*? List of Pseudo Class  */
+
+.hero-content a:link {
+    color: rgb(10, 10, 10);
+}
+
+.hero-content a:visited {
+    color: #d67e03;
+}
+
+.hero-content a:hover {
+    color: #0062ff;
+}
+
+.hero-content a:active {
+    color: #f31559;
+}
+
+/* .content-1:first-child {
+  color: red;
+} */
+
+/* .content-1 ul:first-child {
+  color: Red;
+} */
+
+/* :first-child — first p in .content-1 */
+.content-1 p:first-child {
+    color: #e74c3c;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* :last-child — last element (p) in .content-1 */
+.content-1 p:last-child {
+    color: #3498db;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* :first-of-type — first <p> of its type in .content-1 */
+.content-1 p:first-of-type {
+    background-color: #ffeaa7;
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+
+/* :last-of-type — last <p> of its type in .content-1 */
+.content-1 p:last-of-type {
+    background-color: #dfe6e9;
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+
+/* :first-of-type — first <li> of its type in .content-1 */
+.content-1 li:first-of-type {
+    color: #27ae60;
+}
+
+/* :last-of-type — last <li> of its type in .content-1 */
+.content-1 li:last-of-type {
+    color: #8e44ad;
+}
+
+/* :nth-child(odd) — odd li items in .content-1 */
+.content-1 li:nth-of-type(odd) {
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+/* :nth-child(even) — even li items in .content-1 */
+.content-1 li:nth-of-type(even) {
+    font-size: 24px;
+    opacity: 0.6;
+}
+
+/* .testing — :first-child */
+.testing li:first-child {
+    color: #e74c3c;
+    font-size: 36px;
+}
+
+/* .testing — :last-child */
+.testing li:last-child {
+    color: #3498db;
+    font-size: 36px;
+}
+
+/* .testing — :nth-child(2) */
+.testing li:nth-child(2) {
+    color: #f39c12;
+}
+
+/* .testing — :nth-child(3) */
+.testing li:nth-child(3) {
+    color: #27ae60;
+}
+
+/* .testing — :nth-child(4) */
+.testing li:nth-child(4) {
+    color: #8e44ad;
+}
+
+/* .testing li hover */
+.testing li:hover {
+    background-color: #080a0c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0 12px;
+    transition: background-color 0.3s ease;
+}
