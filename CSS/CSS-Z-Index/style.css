@@ -44,7 +44,6 @@ body {
     position: relative;
     background: linear-gradient(to right, #514a9d, #24c6dc);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 15px;
     position: relative;
 }
 
@@ -57,7 +56,7 @@ body {
     font-size: 2rem;
     color: #fff;
     position: absolute;
-    border-radius: 10px;
+    text-align: center;
 }
 
 .child-1{
