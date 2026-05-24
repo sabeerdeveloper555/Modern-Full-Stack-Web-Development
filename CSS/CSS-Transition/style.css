@@ -1,0 +1,116 @@
+/** ------------------------------------- -->
+/**  TRANSITION IN CSS 
+/** ---------------------------------------- --> */
+
+/*? transition-property: Specifies which CSS properties should be transitioned.
+Example: Transitioning the color and background-color properties.
+.element {
+    transition-property: color, background-color;
+} */
+
+/*? transition-duration: Defines how long the transition should take to complete.
+Example: Transitioning over 1 second.
+.element {
+    transition-duration: 1s;
+} */
+/* it accept s and ms values too 
+Transition options: */
+
+/*? 3: transition-timing-function: Specifies the timing curve used for the transition.
+Example: Using ease-in-out for a smooth start and end.
+.element {
+    transition-timing-function: ease-in-out;
+} */
+
+/*? 4:transition-delay: Sets a delay before the transition starts.
+Example: Starting the transition after 0.5 seconds. */
+
+/** ------------------------------------- -->
+/**  NOTES + TIPS 
+/** ---------------------------------------- --> */
+
+/** shorthand property of all 4 is simply to write transition */
+/* property name | duration | easing function | delay */
+/*? transition: margin-right 4s ease-in-out 1s; */
+
+/** ---------------------------------------- --> */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #303841;
+    height: 100vh;
+    font-family: "Jost", sans-serif;
+}
+
+.container {
+    height: 100vh;
+    max-width: 1320px;
+    padding: 64px 0;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 64px;
+}
+
+.grid-two-column {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    text-align: left;
+    color: #f5f5f5;
+}
+
+.hero-content p {
+    font-size: 18px;
+    text-align: left;
+    letter-spacing: 1px;
+    margin: 20px 0 40px 0;
+    color: #f5f5f5;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: rgba(253, 253, 253, 0.1) 0px 8px 24px, rgba(255, 255, 255, 0.1) 0px 16px 56px, rgba(255, 255, 255, 0.1) 0px 24px 80px;
+}
+
+.hero-content a {
+    background-color: transparent;
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #f5f5f5;
+    color: #f5f5f5;
+    letter-spacing: 2px;
+    width: 200px;
+    text-align: center;
+    /*  transition-property: width, color, background-color; */
+    /*  transition-duration: 1s;
+        transition-timing-function: linear;
+        transition-delay: 2s; */
+
+    transition: all 1s linear;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 4px 16px, rgba(238, 238, 238, 0.2) 0px 8px 24px, rgba(234, 234, 236, 0.2) 0px 16px 56px;
+}
+
+.hero-content a:hover {
+    background-color: #f5f5f5;
+    color: #303841;
+    width: 250px;
+}
