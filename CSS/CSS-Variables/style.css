@@ -1,0 +1,230 @@
+/** ------------------------------------- -->
+/** CSS VARIABLES
+/** ---------------------------------------- --> */
+
+/*? CSS variables, also known as CSS custom properties, allow you to define reusable values in your CSS code. They provide more flexibility and maintainability to your styles.  */
+
+/*? 1: Declaration and Syntax: */
+/* Declare a CSS variable with the -- prefix followed by a name. For example: --main-color. */
+/* Assign a value to the variable using the var() function, like this: var(--main-color). */
+/* Variables can store various types of values, such as colors, numbers, text, and more. */
+/** --main-color: #3498db; */
+
+/*? 2: Variable Definition: */
+/*? You can define variables in various places, including at the root level, within a selector, or even inside a specific CSS rule. */
+/** :root { --main-color: #3498db;  } */
+
+/*? 3: Variable Usage: */
+/* Use the var keyword */
+/* .button {
+! background-color: var(--main-color);
+} */
+
+/** ---------------------------------------- --> */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Brand Colors */
+    --primary-color: #3498db;
+    --primary-color-light: #5dade2;
+    --primary-color-dark: #1a6fa8;
+
+    --secondary-color: #2ecc71;
+    --secondary-color-light: #58d68d;
+    --secondary-color-dark: #1a9950;
+
+    --accent-color: #e74c3c;
+    --accent-color-light: #ff6b6b;
+    --accent-color-dark: #c0392b;
+
+    /* Background Colors */
+    --bg-primary: #080a0c;
+    --bg-secondary: #0f1317;
+    --bg-card: #141920;
+    --bg-card-hover: #1c2430;
+
+    /* Text Colors */
+    --text-primary: #f0f4f8;
+    --text-secondary: #a8b8cc;
+    --text-muted: #5c6f82;
+
+    /* Border & Divider */
+    --border-color: rgba(52, 152, 219, 0.2);
+    --border-color-hover: rgba(52, 152, 219, 0.5);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-color-light));
+    --gradient-hero: linear-gradient(160deg, #0f1317 0%, #080a0c 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-glow-primary: 0 0 24px rgba(52, 152, 219, 0.25);
+    --shadow-glow-accent: 0 0 24px rgba(231, 76, 60, 0.3);
+
+    /* Spacing Scale */
+    --space-xs: 0.4rem;
+    --space-sm: 0.8rem;
+    --space-md: 1.6rem;
+    --space-lg: 3.2rem;
+    --space-xl: 6.4rem;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    background-image: var(--gradient-hero);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* ---- Layout ---- */
+
+.container {
+    min-height: 100vh;
+    max-width: 1320px;
+    padding: var(--space-xl) var(--space-md);
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.grid-two-column {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---- Hero Section ---- */
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* ---- Hero Content ---- */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.hero-content h1 {
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#para-id {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    margin: 0;
+    padding: var(--space-md);
+    background-color: var(--bg-card);
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.para-class {
+    color: var(--text-secondary);
+}
+
+/* ---- CTA Button ---- */
+
+.hero-content a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.85rem 2.4rem;
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-glow-accent);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    align-self: flex-start;
+}
+
+.hero-content a::after {
+    content: "→";
+    font-size: 1.1rem;
+    transition: transform var(--transition-fast);
+}
+
+.hero-content a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 0 36px rgba(231, 76, 60, 0.45);
+}
+
+.hero-content a:hover::after {
+    transform: translateX(4px);
+}
+
+/* ---- Hero Image ---- */
+
+.hero-image figure {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md), var(--shadow-glow-primary);
+    transition: box-shadow var(--transition-base);
+}
+
+.hero-image figure:hover {
+    box-shadow: var(--shadow-md), 0 0 40px rgba(52, 152, 219, 0.35);
+    border-color: var(--border-color-hover);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
