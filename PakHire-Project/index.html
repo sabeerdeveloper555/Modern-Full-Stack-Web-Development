@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PakHire</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -33,9 +36,8 @@
     <!-- Hero Section-->
     <section class="hero">
         <div class="hero-eyebrow">
-            <span class="eyebrow-dot">
-                Pakistan's #1 Local Job Portal
-            </span>
+            <span class="eyebrow-dot"></span>
+            Pakistan's #1 Local Job Portal
         </div>
 
         <h1 class="hero-title">
@@ -51,20 +53,12 @@
 
         <!-- Search -->
         <div class="search-box">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-            </svg>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
 
             <input type="text" placeholder="Job title, skill, or comapny..." class="search-input">
             <div class="search-divider"></div>
             <div class="search-location">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                </svg>
+                <i class="fa-solid fa-location-dot"></i>
                 Karachi
             </div>
 
@@ -74,12 +68,12 @@
         <!-- Popular Tags -->
         <div class="popular-tags">
             <span class="popular-label">Popular:</span>
-            <a href="" class="tag">React Developer</a>
-            <a href="" class="tag">Python</a>
-            <a href="" class="tag">UI/UX Designer</a>
-            <a href="" class="tag">Node.js</a>
-            <a href="" class="tag">Data Analyst</a>
-            <a href="" class="tag">Digital Marketing</a>
+            <a href="#" class="tag">React Developer</a>
+            <a href="#" class="tag">Python</a>
+            <a href="#" class="tag">UI/UX Designer</a>
+            <a href="#" class="tag">Node.js</a>
+            <a href="#" class="tag">Data Analyst</a>
+            <a href="#" class="tag">Digital Marketing</a>
         </div>
 
         <!-- Stats -->
@@ -102,6 +96,22 @@
             </div>
         </div>
     </section>
+
+    <!-- Companies Trust Bar -->
+    <div class="companies-section">
+        <div class="companies-inner">
+            <p class="companies-label">Trusted by leading Pakistani Companies</p>
+            <div class="companies-logos">
+                <span class="company-logo-item">Systems Ltd</span>
+                <span class="company-logo-item">Netsol</span>
+                <span class="company-logo-item">Arbisoft</span>
+                <span class="company-logo-item">10Pearls</span>
+                <span class="company-logo-item">Meezan Bank</span>
+                <span class="company-logo-item">Careen</span>
+                <span class="company-logo-item">Daraz</span>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

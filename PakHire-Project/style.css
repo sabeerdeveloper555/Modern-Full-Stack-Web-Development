@@ -27,7 +27,7 @@ body {
     --surface: #13131a;
     --surface-2: #1c1c26;
     --surface-3: #242433;
-    --border: rgba(255, 255, 255, 0.7);
+    --border: rgba(255, 255, 255, 0.07);
     --border-accent: rgba(200, 240, 74, 0.7);
     --text-primary: #f0ede6;
     --text-secondary: #8a8790;
@@ -225,12 +225,12 @@ nav {
     animation: fade-up 0.6s ease both;
 }
 
-/* .eyebrow-dot{
+.eyebrow-dot{
     width: 5px;
     height: 5px;
     background: var(--accent);
     border-radius: 50%;
-} */
+}
 
 
 .hero-title {
@@ -405,4 +405,52 @@ nav {
     font-size: 13px;
     color: var(--text-muted);
     margin-top: 4px;
+}
+
+/* Companies row */
+.companies-section{
+    position: relative;
+    z-index: 1;
+    padding: 60px 5%;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    margin: 0;
+    max-width: 100%;
+}
+
+.companies-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.companies-label{
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+}
+
+.companies-logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.company-logo-item{
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: -0.5px;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.company-logo-item:hover{
+    color: var(--text-secondary);
 }
