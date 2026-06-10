@@ -141,7 +141,6 @@
 // let num = Number(str); // Explicit conversion of "123" to 123
 // console.log(num); // Output: 123
 
-const prompt = require("prompt-sync")();
 
 let userName = prompt("Enter your username: ")
 alert("Welcome " + userName)
