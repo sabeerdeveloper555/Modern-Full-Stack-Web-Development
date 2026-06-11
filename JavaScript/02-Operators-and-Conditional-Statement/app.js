@@ -111,8 +111,8 @@
 // console.log("Hello " + "World");
 
 // let firstName = "Sabeer";
-// let lastName = " Alam";
-// console.log(firstName + lastName);
+// let lastName = "Alam";
+// console.log(firstName + " " + lastName);
 
 // 6. Ternary Operator 
 // It is a shorthand property for if...else condition
@@ -125,7 +125,62 @@
 // let result = age >=15 ? "You are eligible to vote":"You are not eligible to vote";
 // console.log(result);
 
-let numOne = Number(prompt("Enter a first value: "));
-let numTwo = Number(prompt("Enter a second value: "));
-let result = numOne > numTwo ? `Num_One ${numOne} is greater than Num_Two ${numTwo}` : `Num_Two ${numTwo} is greater than Num_One ${numOne}`
-console.log(result);
+// let numOne = Number(prompt("Enter a first value: "));
+// let numTwo = Number(prompt("Enter a second value: "));
+// let result = numOne > numTwo ? `Num_One ${numOne} is greater than Num_Two ${numTwo}` : `Num_Two ${numTwo} is greater than Num_One ${numOne}`
+// console.log(result);
+
+
+// JavaScript Conditional Statements
+
+// if statement
+// let score = 80;
+// if (score >= 50) {
+//     console.log("You Passed!");
+// }
+
+// if...else statement
+// let score = 40;
+// if (score >= 50) {
+//     console.log("You Passed!");
+// } else{
+//     console.log("You Fail!");
+// }
+
+// Nested if...else ladder
+// let userName = "admin";
+// let password = "1234";
+
+// let userNameInput = prompt("Enter username: ");
+
+// if(userNameInput === userName){
+//     let passwordInput = prompt("Enter password: ");
+//     if(passwordInput === password){
+//         console.log("Access Granted")
+//     } else{
+//         console.log("Invalid Password! Please enter correct password")
+//     }
+// } else{
+//     console.log("Access Denied")
+// }
+
+// Switch case statement
+// let lightSignal = "green";
+// switch (lightSignal) {
+//     case "red":
+//         console.log("Stop");
+//         break;
+    
+//     case "yellow":
+//         console.log("Ready");
+//         break;
+
+//     case "green":
+//         console.log("Go");
+//         break;
+
+//     default:
+//         console.log("Invalid Light Signal");
+//         break;
+// }
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Write a program of simple calculator using switch case statement
+        let num1 = Number(prompt("Enter 1st number: "));
+        let num2 = Number(prompt("Enter 2nd number: "));
+        let operator = prompt(`
+            1. Add (+)
+            2. Subtract (-)
+            3. Multiply (*)
+            4. Divide (/)
+        `);
+
+        // switch (operator) {
+        //     case "+":
+        //         console.log(num1 + num2);
+        //         break;
+            
+        //     case "-":
+        //         console.log(num1 - num2);
+        //         break;
+            
+        //     case "*":
+        //         console.log(num1 * num2);
+        //         break;
+            
+        //     case "/":
+        //         console.log(num1 / num2);
+        //         break;
+            
+        //     default:
+        //         console.log("Invalid Operation");
+        //         break;
+        // }
+
+        // Write a program of simple calculator using if...else else if statement
+        if(operator === '+'){
+            console.log(num1 + num2);
+        } else if(operator === '-'){
+            console.log(num1 - num2);
+        } else if(operator === '*'){
+            console.log(num1 * num2);
+        } else if(operator === '/'){
+            console.log(num1 / num2);
+        } else{
+            console.log("Invalid operator");
+        }
+    </script>
+</body>
+</html>
