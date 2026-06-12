@@ -31,6 +31,10 @@
             <a href="#" class="btn-ghost">Log in</a>
             <a href="#" class="btn-accent">Post a Job</a>
         </div>
+
+        <button class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
     <!-- Hero Section-->
@@ -112,6 +116,225 @@
             </div>
         </div>
     </div>
-</body>
 
+    <!-- Feature Jobs -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Featured <span>Jobs</span></h2>
+            <a href="#" class="section-link">
+                View all jobs
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="category-row">
+            <a href="#" class="cat-pill active">
+                <i class="fa-solid fa-laptop-code cat-icon"></i>
+                <span class="cat-name">Tech & IT</span>
+                <span class="cat-count">4.2K</span>
+            </a>
+            <a href="#" class="cat-pill">
+                <i class="fa-solid fa-chart-line cat-icon"></i>
+                <span class="cat-name">Finance</span>
+                <span class="cat-count">1.8K</span>
+            </a>
+            <a href="#" class="cat-pill">
+                <i class="fa-solid fa-pen-nib cat-icon"></i>
+                <span class="cat-name">Design</span>
+                <span class="cat-count">920</span>
+            </a>
+            <a href="#" class="cat-pill">
+                <i class="fa-solid fa-bullhorn cat-icon"></i>
+                <span class="cat-name">Marketing</span>
+                <span class="cat-count">1.1K</span>
+            </a>
+            <a href="#" class="cat-pill">
+                <i class="fa-solid fa-gears cat-icon"></i>
+                <span class="cat-name">Engineering</span>
+                <span class="cat-count">2.3K</span>
+            </a>
+            <a href="#" class="cat-pill">
+                <i class="fa-solid fa-heart-pulse cat-icon"></i>
+                <span class="cat-name">Healthcare</span>
+                <span class="cat-count">680</span>
+            </a>
+        </div>
+
+        <!-- Job Cards Grid -->
+        <div class="jobs-grid">
+
+            <!-- Card 1 — Featured -->
+            <a href="#" class="job-card featured stagger-1">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#1a1a28;color:#c8f04a;">SL</div>
+                    <span class="badge-featured">Featured</span>
+                </div>
+                <div class="job-title">Senior React Developer</div>
+                <div class="company-name">Systems Limited · Karachi</div>
+                <div class="job-meta">
+                    <span class="meta-tag">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        </svg>
+                        Full-time
+                    </span>
+                    <span class="meta-tag">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Hybrid
+                    </span>
+                    <span class="meta-tag">3–5 yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 180K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="#" class="job-card stagger-2">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#1a2018;color:#7bc142;">AR</div>
+                    <span class="badge-new">New</span>
+                </div>
+                <div class="job-title">Full Stack Engineer</div>
+                <div class="company-name">Arbisoft · Lahore</div>
+                <div class="job-meta">
+                    <span class="meta-tag">Full-time</span>
+                    <span class="meta-tag">Remote</span>
+                    <span class="meta-tag">2–4 yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 150K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="#" class="job-card stagger-3">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#1a1620;color:#a07bd4;">NX</div>
+                    <span></span>
+                </div>
+                <div class="job-title">UI/UX Designer</div>
+                <div class="company-name">Netsol Technologies · Lahore</div>
+                <div class="job-meta">
+                    <span class="meta-tag">Full-time</span>
+                    <span class="meta-tag">On-site</span>
+                    <span class="meta-tag">1–3 yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 90K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="#" class="job-card stagger-1">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#1a1818;color:#e07575;">10P</div>
+                    <span class="badge-new">New</span>
+                </div>
+                <div class="job-title">Node.js Backend Dev</div>
+                <div class="company-name">10Pearls · Karachi</div>
+                <div class="job-meta">
+                    <span class="meta-tag">Full-time</span>
+                    <span class="meta-tag">Hybrid</span>
+                    <span class="meta-tag">2–5 yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 130K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="#" class="job-card stagger-2">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#151a18;color:#4db896;">DZ</div>
+                    <span></span>
+                </div>
+                <div class="job-title">Data Analyst</div>
+                <div class="company-name">Daraz · Karachi</div>
+                <div class="job-meta">
+                    <span class="meta-tag">Full-time</span>
+                    <span class="meta-tag">On-site</span>
+                    <span class="meta-tag">1–2 yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 80K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="#" class="job-card stagger-3">
+                <div class="job-card-top">
+                    <div class="company-logo" style="background:#1a1815;color:#e0a450;">MB</div>
+                    <span class="badge-featured">Featured</span>
+                </div>
+                <div class="job-title">Digital Marketing Lead</div>
+                <div class="company-name">Meezan Bank · Islamabad</div>
+                <div class="job-meta">
+                    <span class="meta-tag">Full-time</span>
+                    <span class="meta-tag">On-site</span>
+                    <span class="meta-tag">3+ yrs exp</span>
+                </div>
+                <div class="job-card-footer">
+                    <div>
+                        <div class="job-salary">PKR 110K <span>/ month</span></div>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ── RECRUITER CTA ── -->
+    <div style="padding: 0 5%; max-width: 1200px; margin: 0 auto;">
+        <div class="cta-banner">
+            <div>
+                <div class="cta-title">Hiring the best<br>talent in <span>Pakistan?</span></div>
+                <p class="cta-sub">Post your job in minutes and reach 98,000+ active job seekers across Pakistan's top
+                    cities.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="#" class="btn-ghost btn-lg">See pricing</a>
+                <a href="#" class="btn-accent btn-lg">Post a Job →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copy">© 2025 PakHire · Made with ❤️ in Karachi 🇵🇰</span>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+    <script src="app.js"></script>
 </html>
