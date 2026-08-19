@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Show Modal Button */
+      .showBtn {
+        padding: 12px 25px;
+        margin: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: #222;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .showBtn:hover {
+        background-color: #444;
+      }
+
+      /* Modal */
+      .modelDiv {
+        position: fixed;
+        width: 400px;
+        padding-bottom: 20px;
+        font-family: "Lucida Sans", sans-serif;
+        left: 50%;
+        top: -1000px;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0px 0px 15px 3px #ccc;
+        transition: 0.5s;
+      }
+
+      /* Modal Heading */
+      .modelDiv h2 {
+        position: relative;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 0;
+        font-size: 22px;
+      }
+
+      /* Close Button */
+      .modelDiv h2 span {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #555;
+      }
+
+      .modelDiv h2 span:hover {
+        color: red;
+      }
+
+      /* Form */
+      .modelDiv form {
+        padding: 20px;
+      }
+
+      /* Labels */
+      .modelDiv label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Input Fields */
+      .modelDiv input,
+      .modelDiv textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      /* Input Focus */
+      .modelDiv input:focus,
+      .modelDiv textarea:focus {
+        border-color: #333;
+      }
+
+      /* Textarea */
+      .modelDiv textarea {
+        height: 80px;
+        resize: none;
+      }
+
+      /* Submit Button */
+      .submitBtn {
+        width: 100%;
+        padding: 11px;
+        border: none;
+        border-radius: 5px;
+        background-color: #222;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .submitBtn:hover {
+        background-color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="showBtn">Show Model</button>
+
+    <div class="modelDiv">
+      <h2>Enquire Now <span>&times;</span></h2>
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" />
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Enter your message"></textarea>
+
+        <button type="submit" class="submitBtn">Submit Enquiry</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    let btn = document.querySelector("button");
+    let modelDivEl = document.querySelector(".modelDiv");
+    let closeBtn = document.querySelector("span");
+
+    btn.addEventListener("click", () => {
+      modelDivEl.style.top = "50%";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modelDivEl.style.top = "-1000px";
+    });
+  </script>
+</html>
