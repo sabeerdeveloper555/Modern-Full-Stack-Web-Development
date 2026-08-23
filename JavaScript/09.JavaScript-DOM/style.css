@@ -1,0 +1,7 @@
+.active{
+    background-color: crimson;
+    color: white;
+    font-size: 25px;
+    padding: 10px 20px;
+    transition: 0.5s;
+}

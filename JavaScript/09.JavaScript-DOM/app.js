@@ -65,14 +65,32 @@
 //   }
 // });
 
-const paraElement = document.getElementById("para-1");
-const headingElement = document.getElementById("main-heading");
-let btnStyleElement = document.querySelector("#btnStyle");
+// const paraElement = document.getElementById("para-1");
+// const headingElement = document.getElementById("main-heading");
+// let btnStyleElement = document.querySelector("#btnStyle");
 
-btnStyleElement.addEventListener("click", () => {
-  paraElement.style.fontSize = "20px";
-  paraElement.style.backgroundColor = "red";
-  paraElement.style.color = "white";
-  headingElement.style.backgroundColor = "blue";
-  headingElement.style.color = "white";
+// btnStyleElement.addEventListener("click", () => {
+//   paraElement.style.fontSize = "20px";
+//   paraElement.style.backgroundColor = "red";
+//   paraElement.style.color = "white";
+//   headingElement.style.backgroundColor = "blue";
+//   headingElement.style.color = "white";
+// });
+
+// Add / Remove / Toggle Class:
+let btnAddElement = document.querySelector("#btn-add");
+let btnRemoveElement = document.querySelector("#btn-remove");
+let btnToggleElement = document.querySelector("#btn-toggle");
+let paraElement = document.querySelector("p");
+
+btnAddElement.addEventListener("click", () => {
+  paraElement.classList.add("active");
+});
+
+btnRemoveElement.addEventListener("click", () => {
+  paraElement.classList.remove("active");
+});
+
+btnToggleElement.addEventListener("click", () => {
+  paraElement.classList.toggle("active");
 });

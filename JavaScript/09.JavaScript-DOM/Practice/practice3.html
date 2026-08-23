@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        list-style: none;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 50px;
+        align-items: center;
+        box-shadow: 0px 2px 10px 0px #ccc;
+      }
+
+      header nav ul {
+        display: flex;
+        gap: 30px;
+      }
+
+      header nav ul li a {
+        color: #016e3b;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+
+      @media only screen and (min-width: 200px) and (max-width: 575px) {
+        header nav {
+          position: fixed;
+          top: 0px;
+          background: #ccc;
+          width: 80%;
+          padding: 10px;
+          height: 100vh;
+          left: -100%;
+          transition: 0.5s;
+        }
+
+        header nav ul {
+          flex-direction: column;
+        }
+
+        .menu-icon {
+          display: block;
+          cursor: pointer;
+        }
+
+        .showMenu {
+          left: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <figure>
+        <img
+          src="https://nayanazimabad.com/wp-content/uploads/2016/05/logo-2.png"
+          alt=""
+          width="400"
+        />
+      </figure>
+
+      <i class="fa-solid fa-bars menu-icon"></i>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Course</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      let menuIcon = document.querySelector(".menu-icon");
+
+      let navbarElement = document.querySelector("nav");
+
+      menuIcon.addEventListener("click", () => {
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-xmark");
+        navbarElement.classList.toggle("showMenu");
+      });
+    </script>
+  </body>
+</html>
