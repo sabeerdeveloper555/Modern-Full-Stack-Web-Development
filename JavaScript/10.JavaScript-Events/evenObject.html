@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Object</title>
+    <style>
+      .main {
+        width: 600px;
+        height: 500px;
+        margin: auto;
+        padding: 15px;
+        border: 2px solid blue;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      .main h1{
+        text-align: center;
+      }
+
+      .main p{
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>JavaScript Event Object</h1>
+
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore iste a
+        eos recusandae facilis doloremque ad eaque blanditiis? Nemo nisi eius
+        rerum incidunt accusamus placeat excepturi unde suscipit autem dicta.
+      </p>
+
+      <button id="readMoreBtn">Read More</button>
+    </div>
+  </body>
+  <script>
+    let mainElement = document.querySelector(".main");
+    console.log(mainElement.tabName);
+
+    let btn = document.querySelector("#readMoreBtn");
+
+    mainElement.addEventListener("click", (e) => {
+      if (event.target.tagName === "BUTTON") {
+        alert("Hello");
+      }
+
+      //   console.log(e.type);
+    //   console.log(e.target.tagName);
+      //   console.log(e.currentTarget);
+      //   console.log(e.clientX);
+    });
+
+    // Extract text from button
+    // btn.addEventListener("click", (e)=>{
+    //     console.log(e.target.textContent); // Output: Read More
+    // });
+  </script>
+</html>

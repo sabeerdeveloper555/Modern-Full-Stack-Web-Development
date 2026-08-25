@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, serif;
+        }
+        .productCard{
+            width: 250px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin: auto;
+        }
+        .productCard img{
+            width: 100%;
+        }
+
+        .productCard h2{
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .productCard #addToCart{
+            border: none;
+            margin: 15px 10px;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            background-color: rgb(156, 156, 156);
+        }
+    </style>
+</head>
+<body>
+    <div class="productCard">
+        <img src="https://surteez.com/cdn/shop/files/Streetwear_fashion_close-up_phot__2K_202608171425.jpg?v=1786959196&width=848" alt="">
+        <h2>Drop Shoulder T-Shirt</h2>
+
+        <button id="addToCart">Add to Cart</button>
+    </div>
+</body>
+<script>
+    let productCard = document.querySelector(".productCard");
+
+    let btn = document.querySelector("#addToCart")
+
+    productCard.addEventListener("click", () => {
+        console.log("Product Details")
+    })
+    
+    btn.addEventListener("click", (e) => {
+        console.log("Add to Cart");
+        e.stopPropagation();
+    })
+</script>
+</html>
