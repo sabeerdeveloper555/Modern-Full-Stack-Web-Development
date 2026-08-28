@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeOut and setInterval</title>
+  </head>
+  <body>
+    <h1>setTimeOut and setInterval</h1>
+  </body>
+
+  <script>
+    let count = 1;
+    let getData = () => {
+      if(count === 10){
+        clearInterval(myInterval);
+      }
+      console.log(count, "Welcome to JavaScript World!");
+      count++;
+    }
+    // setTimeout(() => {
+    //   getData();
+    // }, 2000);
+
+    let myInterval = setInterval(() => {
+      getData();
+    }, 500);
+  </script>
+</html>

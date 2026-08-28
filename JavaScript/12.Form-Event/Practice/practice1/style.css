@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil+Supplement&display=swap");
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans Tamil Supplement", sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  background: #f4f7fb;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* =========================
+   MAIN SECTION
+========================= */
+
+.form-section {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-section form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-section form h3 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-outer {
+  margin-bottom: 20px;
+}
+
+.input-outer label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.input-outer input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d5dbe3;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.input-outer input:focus {
+  border-color: #0879da;
+  box-shadow: 0 0 0 3px rgba(8, 121, 218, 0.1);
+}
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.form-section form button {
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #0879da;
+  color: #ffffff;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.form-section form button:hover {
+  background: #0565b8;
+}
+
+.form-section form button:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   TABLE CONTAINER
+========================= */
+
+.form-section > div {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+thead {
+  background: #0879da;
+  color: #ffffff;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 14px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+td {
+  font-size: 14px;
+  color: #333;
+}
+
+/* =========================
+   DELETE BUTTON
+========================= */
+
+td button {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+td button:hover {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+td button:active {
+  transform: scale(0.95);
+}
+
+.error{
+  font-size: 12px;
+  margin: 15px 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  body {
+    padding: 25px;
+  }
+
+  .form-section {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .form-section form {
+    width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .form-section {
+    gap: 20px;
+  }
+
+  .form-section form {
+    padding: 20px;
+  }
+
+  .form-section form h3 {
+    font-size: 20px;
+  }
+
+  .form-section > div {
+    padding: 12px;
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+  }
+
+  td button {
+    padding: 6px 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  body {
+    padding: 10px;
+  }
+
+  .form-section form {
+    padding: 16px;
+  }
+
+  .form-section form h3 {
+    font-size: 18px;
+  }
+
+  .input-outer input {
+    height: 40px;
+  }
+
+  .form-section form button {
+    padding: 11px;
+  }
+}

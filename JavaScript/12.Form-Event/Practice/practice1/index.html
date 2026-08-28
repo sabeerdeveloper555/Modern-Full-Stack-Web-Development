@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Event - Practice1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="form-section">
+      <form action>
+        <h3>Enquire Now</h3>
+        <div class="error"></div>
+        <div class="input-outer">
+          <label for="">Name</label>
+          <input type="text" name="username" />
+        </div>
+        <div class="input-outer">
+          <label for="">Email</label>
+          <input type="email" name="userEmail" />
+        </div>
+        <div class="input-outer">
+          <label for="">Phone</label>
+          <input type="text" name="userContact" />
+        </div>
+        <button>Save</button>
+      </form>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>

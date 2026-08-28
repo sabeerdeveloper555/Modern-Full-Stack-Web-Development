@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin: 20px;
+}
+
+/* Show Modal Button */
+.showBtn {
+  padding: 12px 25px;
+  margin: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.showBtn:hover {
+  background-color: #444;
+}
+
+/* Modal */
+.modelDiv {
+  position: fixed;
+  width: 400px;
+  padding-bottom: 20px;
+  font-family: "Lucida Sans", sans-serif;
+  left: 50%;
+  top: -1000px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0px 0px 15px 3px #ccc;
+  transition: 0.5s;
+}
+
+/* Modal Heading */
+.modelDiv h2 {
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  font-size: 22px;
+}
+
+/* Close Button */
+.modelDiv h2 span {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+
+.modelDiv h2 span:hover {
+  color: red;
+}
+
+/* Form */
+.modelDiv form {
+  padding: 20px;
+}
+
+/* Labels */
+.modelDiv label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input Fields */
+.modelDiv input,
+.modelDiv textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Input Focus */
+.modelDiv input:focus,
+.modelDiv textarea:focus {
+  border-color: #333;
+}
+
+/* Textarea */
+.modelDiv textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Submit Button */
+.submitBtn {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background-color: #444;
+}
