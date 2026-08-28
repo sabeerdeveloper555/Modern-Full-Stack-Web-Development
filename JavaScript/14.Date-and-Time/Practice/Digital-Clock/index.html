@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Courier New", monospace;
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 255, 255, 0.12),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 0, 255, 0.12),
+            transparent 30%
+          ),
+          #050510;
+        overflow: hidden;
+      }
+
+      /* Neon Clock Container */
+      h1 {
+        position: relative;
+        padding: 45px 70px;
+        font-size: clamp(40px, 8vw, 90px);
+        font-weight: 700;
+        letter-spacing: 8px;
+        text-align: center;
+        color: #00ffff;
+        background: rgba(10, 10, 30, 0.65);
+        border: 2px solid rgba(0, 255, 255, 0.7);
+        border-radius: 20px;
+        box-shadow:
+          0 0 10px #00ffff,
+          0 0 30px rgba(0, 255, 255, 0.5),
+          0 0 70px rgba(0, 255, 255, 0.25),
+          inset 0 0 30px rgba(0, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        animation: neonPulse 2s ease-in-out infinite alternate;
+      }
+
+      /* Glow animation */
+      @keyframes neonPulse {
+        from {
+          text-shadow:
+            0 0 5px #00ffff,
+            0 0 15px #00ffff,
+            0 0 30px #00ffff;
+        }
+
+        to {
+          text-shadow:
+            0 0 10px #00ffff,
+            0 0 25px #00ffff,
+            0 0 50px #00ffff,
+            0 0 80px rgba(0, 255, 255, 0.7);
+        }
+      }
+
+      /* Decorative neon circles */
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      body::before {
+        top: -80px;
+        left: -80px;
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        box-shadow:
+          0 0 20px #00ffff,
+          0 0 60px rgba(0, 255, 255, 0.3);
+      }
+
+      body::after {
+        right: -80px;
+        bottom: -80px;
+        border: 2px solid rgba(255, 0, 255, 0.3);
+        box-shadow:
+          0 0 20px #ff00ff,
+          0 0 60px rgba(255, 0, 255, 0.3);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        h1 {
+          padding: 30px 25px;
+          font-size: clamp(30px, 10vw, 55px);
+          letter-spacing: 4px;
+          border-radius: 15px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        h1 {
+          padding: 25px 15px;
+          font-size: 28px;
+          letter-spacing: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+  </body>
+  <script>
+    let headingElement = document.querySelector("h1");
+    let digitalClock = () => {
+      let currentDate = new Date();
+      headingElement.innerHTML = currentDate.toLocaleTimeString();
+    };
+    digitalClock();
+    setInterval(digitalClock, 1000);
+  </script>
+</html>
