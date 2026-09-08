@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Format-7</title>
+  </head>
+  <body>
+    <script>
+      // 7. 20 April 2024 at 01:45 PM
+
+      let date = new Date();
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "Octber",
+        "November",
+        "December",
+      ];
+      let month = months[date.getMonth()];
+      let dateNumber = date.getDate();
+      let year = date.getFullYear();
+
+      let suffix;
+
+      if (dateNumber === 1 || dateNumber === 21 || dateNumber === 31) {
+        suffix = "st";
+      } else if (dateNumber === 2 || dateNumber === 22) {
+        suffix = "nd";
+      } else if (dateNumber === 3 || dateNumber === 23) {
+        suffix = "rd";
+      } else {
+        suffix = "th";
+      }
+
+      let hours = date.getHours();
+      let minutes = String(date.getMinutes()).padStart(2, "0");
+      let seconds = String(date.getSeconds()).padStart(2, "0");
+
+      let ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours === 0 ? 12 : hours;
+
+      hours = String(hours).padStart(2, "0");
+
+      let formatted = `${dateNumber} ${month} ${year} at ${hours}:${minutes} ${ampm}`;
+      console.log(formatted);
+    </script>
+  </body>
+</html>

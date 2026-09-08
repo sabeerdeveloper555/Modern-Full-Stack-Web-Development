@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Format-1</title>
+  </head>
+  <body>
+    <script>
+      // 1. Wed 24-Apr 7:45 PM
+      let date = new Date(2026, 8, 6, 12, 20);
+      let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      let day = days[date.getDay()];
+      let dateNumber = date.getDate();
+      let month = months[date.getMonth()];
+      let hours = date.getHours();
+      let minutes = String(date.getMinutes()).padStart(2, "0");
+
+      let ampm = hours >= 12 ? "PM" : "AM";
+
+      hours = hours % 12;
+      hours = hours === 0 ? 12 : hours;
+
+      let formatted = `${day} ${dateNumber}-${month} ${hours}:${minutes} ${ampm}`;
+      console.log(formatted);
+    </script>
+  </body>
+</html>
