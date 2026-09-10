@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="username"></h2>
+    <ul id="skillList"></ul>
+    <script>
+        localStorage.setItem("name", "Sabeer Alam");
+        const name = localStorage.getItem("name");
+        const username = document.getElementById("username");
+        username.textContent = name;
+
+        const skills = ["HTML", "CSS", "JavaScript", "Tailwind CSS", "React Js", "MongoDB", "Node Js", "Express Js"];
+
+        localStorage.setItem("skills", JSON.stringify(skills));
+
+        const getData = JSON.parse(localStorage.getItem("skills"));
+
+        const skillListElement = document.getElementById("skillList");
+        
+        getData.forEach(element => {
+            const li = document.createElement("li");
+            li.textContent = element;
+            skillListElement.appendChild(li);
+        });
+        
+
+    </script>
+</body>
+</html>

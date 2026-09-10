@@ -31,12 +31,25 @@
 // console.log(localStorage.key(2));
 
 // Storing Objects in LocalStorage
-let user = {
-  userName: "Sabeer Alam",
-  userEmail: "sabeer.alam@test.com",
-  userAge: 24
-}
-localStorage.setItem("userObj", JSON.stringify(user));
+// let user = {
+//   userName: "Sabeer Alam",
+//   userEmail: "sabeer.alam@test.com",
+//   userAge: 24,
+// };
+// localStorage.setItem("userObj", JSON.stringify(user));
 
-let getUserData = JSON.parse(localStorage.getItem("userObj"));
-console.log(getUserData, typeof(getUserData));
+// let getUserData = JSON.parse(localStorage.getItem("userObj"));
+// console.log(getUserData, typeof getUserData);
+
+// localStorage.setItem("name", "Sabeer");
+// localStorage.setItem("age", "22");
+// localStorage.setItem("city", "Karachi");
+
+// for(let i = 0; i < localStorage.length; i++){
+//   console.log(localStorage.key(i));
+// }
+
+const fruits = ["Apple", "Banana", "Orange"];
+const myStorage = localStorage.setItem("fruits", fruits);
+console.log(myStorage);
+
