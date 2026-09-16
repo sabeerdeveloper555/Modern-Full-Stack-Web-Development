@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Calibri, sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 30px 0px;
+}
+
+.productSection {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.productRow {
+  display: grid;
+  grid-template-columns: 20% auto;
+  gap: 20px;
+}
+
+.productRow aside {
+  padding: 15px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.productRow aside ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.productRow aside ul li {
+  padding: 7px;
+  cursor: pointer;
+}
+
+.productList {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.productItems {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 2px solid #ccc;
+}
+
+.productItems img{
+    width: 100%;
+}
+
+.productItems h3{
+    font-size: 18px;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: yellow;
+}
+
+.priceCart{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.priceCart button{
+    padding: 6px 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #fff;
+    transition: ease 0.3s;
+}
+
+.priceCart button:hover{
+    background-color: #000000;
+}
+
+
