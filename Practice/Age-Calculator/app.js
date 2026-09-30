@@ -23,14 +23,21 @@ calculateBtn.addEventListener("click", () => {
   const birthMonth = birth.getMonth();
   const currentDay = today.getDate();
   const birthDay = birth.getDate();
+  const nextBirthDay = new Date(currentYear, birthMonth, birthDay);
 
+  if(nextBirthDay < today){
+    nextBirthDay.setFullYear(nextBirthDay.getFullYear()+1);
+  }
+  const difference = nextBirthDay - today;
+  const daysRemaining = Math.ceil(difference / (1000 * 60 * 60 * 24));
+  
   let age = currentYear - birthYear;
-
+  
   if (
     currentMonth < birthMonth ||
     (currentMonth === birthMonth && currentDay < birthDay)
   ) {
     age--;
   }
-  result.textContent = `You are ${age} years old`;
+  result.textContent = `You are ${age} years old. Your next birthday is in ${daysRemaining} days`;
 });
