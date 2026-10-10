@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Notes App</h1>
+
+      <input type="text" id="noteTitle" placeholder="Enter note title" />
+
+      <textarea id="noteContent" placeholder="Enter note content"></textarea>
+
+      <button id="addNoteBtn">Add Note</button>
+
+      <button id="cancelEditBtn" hidden>Cancel Edit</button>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search notes by title or content..."
+      />
+
+      <p id="errorMessage"></p>
+
+      <div id="notesContainer"></div>
+
+      <p id="noNotesMessage" hidden>No notes found. Try a different search.</p>
+
+      <p id="emptyStateMessage" hidden>
+        You haven't created any notes yet. Add your first note!
+      </p>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

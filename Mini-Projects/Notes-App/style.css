@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Clarity+City:ital,wght@0,500;1,500&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Clarity City', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f7f5f0;
+  color: #292524;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 35px;
+  background-color: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(41, 37, 36, 0.08);
+}
+
+.container h1 {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 32px;
+  color: #292524;
+}
+
+#noteTitle,
+#noteContent {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #292524;
+  background-color: #fafaf9;
+  border: 2px solid #e7e5e4;
+  border-radius: 10px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+#noteTitle {
+  height: 50px;
+}
+
+#noteContent {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+#noteTitle::placeholder,
+#noteContent::placeholder {
+  color: #a8a29e;
+}
+
+#noteTitle:focus,
+#noteContent:focus {
+  background-color: #ffffff;
+  border-color: #f97316;
+}
+
+#addNoteBtn {
+  width: 100%;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #f97316;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#addNoteBtn:hover {
+  background-color: #ea580c;
+}
+
+#addNoteBtn:active {
+  transform: scale(0.98);
+}
+
+#notesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.note-card {
+  padding: 20px;
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-left: 5px solid #f97316;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.note-card h3 {
+  margin-bottom: 10px;
+  color: #292524;
+  font-size: 20px;
+}
+
+.note-card p {
+  color: #57534e;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Common styling for note buttons */
+.note-card button {
+  margin-top: 15px;
+  margin-right: 10px;
+  padding: 9px 16px;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Delete button */
+.note-card button:first-of-type {
+  background-color: #dc2626;
+}
+
+.note-card button:first-of-type:hover {
+  background-color: #b91c1c;
+}
+
+/* Edit button */
+.note-card button:last-of-type {
+  background-color: #16a34a;
+}
+
+.note-card button:last-of-type:hover {
+  background-color: #15803d;
+}
+
+/* Button click effect */
+.note-card button:active {
+  transform: scale(0.97);
+}
+
+#errorMessage {
+  margin-top: 10px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+#cancelEditBtn {
+  width: 100%;
+  background-color: #57534e;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#cancelEditBtn:hover {
+  background-color: #44403c;
+}
+
+#cancelEditBtn[hidden] {
+  display: none;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #292524;
+  background-color: #fafaf9;
+  border: 2px solid #e7e5e4;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#searchInput:focus {
+  border-color: #f97316;
+}
+
+#searchInput::placeholder {
+  color: #a8a29e;
+}
+
+#noNotesMessage {
+  margin-top: 20px;
+  padding: 18px;
+  text-align: center;
+  color: #78716c;
+  background-color: #fafaf9;
+  border: 1px dashed #d6d3d1;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+#noNotesMessage[hidden] {
+  display: none;
+}
+
+#emptyStateMessage {
+  margin-top: 20px;
+  padding: 24px 18px;
+  text-align: center;
+  color: #78716c;
+  background-color: #fafaf9;
+  border: 1px dashed #d6d3d1;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+#emptyStateMessage[hidden] {
+  display: none;
+}
+
+/* Responsive Design */
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 15px;
+  }
+
+  .container {
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+  }
+
+  #noteTitle,
+  #noteContent {
+    font-size: 15px;
+  }
+}
