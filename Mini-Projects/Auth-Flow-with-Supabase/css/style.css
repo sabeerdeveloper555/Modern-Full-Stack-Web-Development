@@ -1,0 +1,453 @@
+/* ========================================
+   1. Reset and Global Styles
+======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+
+  --primary-color: #16a34a;
+  --primary-hover: #15803d;
+  --text-color: #f5f5f5;
+  --muted-color: #a3a3a3;
+  --border-color: #404040;
+  --background-color: #171717;
+  --white: #262626;
+  --input-background: #303030;
+  --illustration-background: #1e3024;
+  --illustration-text: #b4d6bd;
+  --placeholder-color: #a3a3a3;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+html {
+  min-height: 100%;
+  background-color: var(--background-color);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* ========================================
+   2. Main Container
+======================================== */
+
+.auth-container {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 650px;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 20px 60px var(--shadow-color);
+}
+
+/* ========================================
+   3. Form Section
+======================================== */
+
+.form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 50px;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 380px;
+}
+
+.form-wrapper h1 {
+  color: var(--text-color);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--muted-color);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+/* ========================================
+   4. Form Inputs
+======================================== */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* ========================================
+   5. Login Button
+======================================== */
+
+#loginBtn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#loginBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+#loginBtn:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.5);
+  outline-offset: 3px;
+}
+
+#loginBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   6. Status Messages
+======================================== */
+
+#message,
+#dashboardMessage {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  overflow-wrap: anywhere;
+}
+
+#message:empty,
+#dashboardMessage:empty {
+  display: none;
+}
+
+/* ========================================
+   7. Signup Navigation
+======================================== */
+
+.switch-text {
+  margin-top: 25px;
+  text-align: center;
+  color: var(--muted-color);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.switch-text a {
+  color: #4ade80;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   8. Illustration Section
+======================================== */
+
+.illustration-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  overflow: hidden;
+  background-color: var(--illustration-background);
+}
+
+/* Decorative circles */
+
+.illustration-section::before,
+.illustration-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(134, 239, 172, 0.15);
+}
+
+.illustration-section::before {
+  width: 380px;
+  height: 380px;
+  top: -100px;
+  right: -100px;
+}
+
+.illustration-section::after {
+  width: 280px;
+  height: 280px;
+  bottom: -90px;
+  left: -80px;
+}
+
+.illustration-content {
+  position: relative;
+  z-index: 1;
+  max-width: 350px;
+  text-align: center;
+}
+
+.illustration-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  background-color: #303030;
+  color: #4ade80;
+  font-size: 55px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.illustration-content h2 {
+  color: var(--text-color);
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 15px;
+}
+
+.illustration-content p {
+  color: var(--illustration-text);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   9. Signup Page Adjustments
+======================================== */
+
+#signupForm .form-group {
+  margin-bottom: 17px;
+}
+
+#signupBtn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#signupBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+#signupBtn:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.5);
+  outline-offset: 3px;
+}
+
+#signupBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   10. Dashboard Elements
+======================================== */
+
+#logoutBtn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background-color: #dc2626;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #b91c1c;
+}
+
+#logoutBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#userEmail {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--muted-color);
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   11. Responsive Design: Tablets
+======================================== */
+
+@media (max-width: 900px) {
+  body {
+    padding: 20px;
+  }
+
+  .auth-container {
+    max-width: 700px;
+    grid-template-columns: 1fr 0.85fr;
+  }
+
+  .form-section {
+    padding: 45px 30px;
+  }
+
+  .illustration-section {
+    padding: 30px;
+  }
+
+  .illustration-content h2 {
+    font-size: 25px;
+  }
+
+  .illustration-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 45px;
+  }
+}
+
+/* ========================================
+   12. Responsive Design: Mobile
+======================================== */
+
+@media (max-width: 650px) {
+  body {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .auth-container {
+    max-width: 450px;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    border-radius: 15px;
+  }
+
+  .form-section {
+    padding: 45px 25px;
+  }
+
+  .form-wrapper h1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    margin-bottom: 28px;
+  }
+
+  .illustration-section {
+    min-height: 250px;
+    padding: 35px 25px;
+  }
+
+  .illustration-icon {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 18px;
+    border-radius: 18px;
+    font-size: 35px;
+  }
+
+  .illustration-content h2 {
+    font-size: 23px;
+  }
+
+  .illustration-content p {
+    font-size: 13px;
+  }
+
+  .illustration-section::before {
+    width: 250px;
+    height: 250px;
+  }
+
+  .illustration-section::after {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* ========================================
+   13. Reduced Motion Accessibility
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

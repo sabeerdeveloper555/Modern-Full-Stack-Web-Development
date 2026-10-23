@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Responsive layout for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign Up | AuthApp</title>
+
+    <!-- Reuse the existing stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="auth-container">
+      <!-- Left side: Signup form -->
+      <section class="form-section">
+        <div class="form-wrapper">
+          <h1>Create account</h1>
+          <p class="subtitle">Join us today. It only takes a minute.</p>
+
+          <form id="signupForm">
+            <!-- Full name field -->
+            <div class="form-group">
+              <label for="fullName">Full name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+                minlength="2"
+              />
+            </div>
+
+            <!-- Email field -->
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <!-- Password field -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+
+            <!-- Confirm password field -->
+            <div class="form-group">
+              <label for="confirmPassword">Confirm password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
+
+            <!-- Displays validation and authentication messages -->
+            <p id="message" role="status" aria-live="polite"></p>
+
+            <!-- Signup button -->
+            <button type="submit" id="signupBtn">Create Account</button>
+          </form>
+
+          <!-- Link back to the login page -->
+          <p class="switch-text">
+            Already have an account?
+            <a href="index.html">Sign in</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Right side: Illustration panel -->
+      <section class="illustration-section">
+        <div class="illustration-content">
+          <div class="illustration-icon">✦</div>
+
+          <h2>Start something great.</h2>
+
+          <p>
+            Create your account and take the first step toward a simpler, more
+            secure experience.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Supabase JavaScript library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Our Supabase configuration -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Handle signup functionality -->
+    <script src="js/auth.js"></script>
+  </body>
+</html>

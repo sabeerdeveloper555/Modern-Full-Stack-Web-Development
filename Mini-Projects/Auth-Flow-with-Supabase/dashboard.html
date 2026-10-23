@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | AuthFlow</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="auth-container">
+      <section class="form-section">
+        <div class="form-wrapper">
+          <h1>Welcome!</h1>
+
+          <p class="subtitle">You have successfully signed in to AuthFlow.</p>
+
+          <p id="userEmail"></p>
+
+          <p id="dashboardMessage" role="status" aria-live="polite"></p>
+
+          <button type="button" id="logoutBtn">Log Out</button>
+        </div>
+      </section>
+
+      <section class="illustration-section">
+        <div class="illustration-content">
+          <div class="illustration-icon">✦</div>
+
+          <h2>Your space, your journey.</h2>
+
+          <p>Manage your account securely with AuthFlow.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Supabase JavaScript library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Initialize Supabase client -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Dashboard authentication logic -->
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
