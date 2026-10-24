@@ -530,3 +530,153 @@ body {
     transition: none !important;
   }
 }
+
+/* ========================================
+   Forgot Password and Reset Password Pages
+======================================== */
+
+/* Small icon above the page heading */
+.auth-page-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background-color: var(--illustration-background);
+  color: #4ade80;
+  font-size: 21px;
+}
+
+/* Back navigation */
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 32px;
+  color: var(--muted-color);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-back-link:hover {
+  color: #4ade80;
+}
+
+.auth-back-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Consistent page heading */
+.form-wrapper h1 {
+  line-height: 1.25;
+}
+
+/* Better subtitle spacing */
+.form-wrapper .subtitle {
+  margin-bottom: 30px;
+}
+
+/* Reset page form buttons */
+#resetPasswordBtn,
+#updatePasswordBtn {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 9px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#resetPasswordBtn:hover,
+#updatePasswordBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+#resetPasswordBtn:focus-visible,
+#updatePasswordBtn:focus-visible {
+  outline: 3px solid rgba(74, 222, 128, 0.5);
+  outline-offset: 3px;
+}
+
+#resetPasswordBtn:disabled,
+#updatePasswordBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Password visibility controls */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted-color);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  color: #4ade80;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+.password-toggle i {
+  pointer-events: none;
+}
+
+/* Consistent form navigation spacing */
+.form-wrapper .switch-text {
+  margin-top: 26px;
+}
+
+/* Mobile spacing adjustments */
+@media (max-width: 650px) {
+  .auth-back-link {
+    margin-bottom: 26px;
+  }
+
+  .auth-page-icon {
+    margin-bottom: 20px;
+  }
+
+  .form-wrapper .subtitle {
+    margin-bottom: 25px;
+  }
+}
