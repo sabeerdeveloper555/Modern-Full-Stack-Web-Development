@@ -8,21 +8,30 @@
 
     <title>Sign Up | AuthApp</title>
 
+    <!-- Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
     <!-- Reuse the existing stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
     <main class="auth-container">
       <!-- Left side: Signup form -->
       <section class="form-section">
         <div class="form-wrapper">
           <h1>Create account</h1>
+
           <p class="subtitle">Join us today. It only takes a minute.</p>
 
           <form id="signupForm">
             <!-- Full name field -->
             <div class="form-group">
               <label for="fullName">Full name</label>
+
               <input
                 type="text"
                 id="fullName"
@@ -37,6 +46,7 @@
             <!-- Email field -->
             <div class="form-group">
               <label for="email">Email address</label>
+
               <input
                 type="email"
                 id="email"
@@ -47,32 +57,60 @@
               />
             </div>
 
-            <!-- Password field -->
+            <!-- Password field with Show/Hide button -->
             <div class="form-group">
               <label for="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Create a password"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              />
+
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Create a password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+
+                <!-- Button to show or hide the password -->
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  aria-controls="password"
+                >
+                  <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
 
-            <!-- Confirm password field -->
+            <!-- Confirm password field with Show/Hide button -->
             <div class="form-group">
               <label for="confirmPassword">Confirm password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                placeholder="Re-enter your password"
-                autocomplete="new-password"
-                minlength="8"
-                required
-              />
+
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Re-enter your password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+
+                <!-- Button to show or hide the confirmation password -->
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  aria-controls="confirmPassword"
+                >
+                  <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
 
             <!-- Displays validation and authentication messages -->
@@ -82,7 +120,7 @@
             <button type="submit" id="signupBtn">Create Account</button>
           </form>
 
-          <!-- Link back to the login page -->
+          <!-- Link back to login page -->
           <p class="switch-text">
             Already have an account?
             <a href="index.html">Sign in</a>
@@ -108,10 +146,13 @@
     <!-- Supabase JavaScript library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Our Supabase configuration -->
+    <!-- Supabase configuration -->
     <script src="js/supabase.js"></script>
 
-    <!-- Handle signup functionality -->
+    <!-- Signup and authentication functionality -->
     <script src="js/auth.js"></script>
+
+    <!-- Show/Hide password functionality -->
+    <script src="js/password-toggle.js"></script>
   </body>
 </html>

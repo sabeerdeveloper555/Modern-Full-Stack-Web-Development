@@ -8,9 +8,16 @@
 
     <title>Login | AuthApp</title>
 
+    <!-- Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
     <!-- Connects the external CSS file -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
     <main class="auth-container">
       <!-- Left side: Login form -->
@@ -20,8 +27,10 @@
           <p class="subtitle">Sign in to continue to your account.</p>
 
           <form id="loginForm">
+            <!-- Email field -->
             <div class="form-group">
               <label for="email">Email address</label>
+
               <input
                 type="email"
                 id="email"
@@ -31,24 +40,41 @@
               />
             </div>
 
+            <!-- Password field with Show/Hide button -->
             <div class="form-group">
               <label for="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                autocomplete="current-password"
-                required
-                minlength="6"
-              />
+
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required
+                  minlength="6"
+                />
+
+                <!-- Button to show or hide the password -->
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  aria-controls="password"
+                >
+                  <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
 
             <!-- Displays validation and authentication messages -->
             <p id="message" role="status" aria-live="polite"></p>
 
+            <!-- Login button -->
             <button type="submit" id="loginBtn">Sign In</button>
           </form>
 
+          <!-- Link to signup page -->
           <p class="switch-text">
             Don't have an account?
             <a href="signup.html">Create account</a>
@@ -60,7 +86,9 @@
       <section class="illustration-section">
         <div class="illustration-content">
           <div class="illustration-icon">✦</div>
+
           <h2>Your journey starts here.</h2>
+
           <p>A simple, secure way to access your personal space.</p>
         </div>
       </section>
@@ -69,10 +97,13 @@
     <!-- Supabase JavaScript library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Our Supabase configuration -->
+    <!-- Supabase configuration -->
     <script src="js/supabase.js"></script>
 
-    <!-- Handle login functionality -->
+    <!-- Login and authentication functionality -->
     <script src="js/auth.js"></script>
+
+    <!-- Show/Hide password functionality -->
+    <script src="js/password-toggle.js"></script>
   </body>
 </html>
