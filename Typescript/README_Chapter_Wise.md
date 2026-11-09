@@ -9,9 +9,10 @@ A beginner-friendly guide to learning TypeScript, covering its introduction, typ
 1. [Introduction to TypeScript](#1-introduction-to-typescript)
 2. [Type Annotation and Type Inference](#2-type-annotation-and-type-inference)
 3. [Union Types and Any Type](#3-union-types-and-any-type)
-4. [Practice Exercises](#4-practice-exercises)
-5. [Solutions](#5-solutions)
-6. [Quick Revision](#6-quick-revision)
+4. [Type Narrowing and Type Guards](#4-type-narrowing-and-type-guards)
+5. [Practice Exercises](#5-practice-exercises)
+6. [Solutions](#6-solutions)
+7. [Quick Revision](#7-quick-revision)
 
 ---
 
@@ -806,117 +807,6 @@ console.log(typeof true); // boolean
 
 We can use `typeof` with union types to check which type the value currently has.
 
-## 3.6 What is Type Narrowing?
-
-**Definition:**
-
-Type narrowing is the process of making a broad type more specific by checking the actual type of a value.
-
-In simple words, TypeScript first knows that a value could have multiple types. After a type check, it can understand which type is being used in a particular block of code.
-
-### Example
-
-```typescript
-function printValue(value: string | number) {
-  if (typeof value === "string") {
-    console.log(value.toUpperCase());
-  } else {
-    console.log(value.toFixed(2));
-  }
-}
-
-printValue("hello");
-printValue(25);
-```
-
-Output:
-
-```text
-HELLO
-25.00
-```
-
-Let's understand this code step by step.
-
-### Step 1: Check for a string
-
-```typescript
-if (typeof value === "string") {
-  console.log(value.toUpperCase());
-}
-```
-
-If `value` is a string, the condition becomes true.
-
-TypeScript now knows that `value` is a string inside this block.
-
-Therefore, we can safely use:
-
-```typescript
-value.toUpperCase();
-```
-
-### Step 2: Handle the number
-
-```typescript
-else {
-  console.log(value.toFixed(2));
-}
-```
-
-If the value is not a string, the remaining possible type is number.
-
-This is because our union contains only two types:
-
-- string
-- number
-
-TypeScript narrows the type to number inside the `else` block.
-
-Therefore, we can safely use:
-
-```typescript
-value.toFixed(2);
-```
-
-### Step 3: Understand the function calls
-
-```typescript
-printValue("hello");
-```
-
-Execution:
-
-1. `typeof value === "string"` returns `true`.
-2. The `if` block executes.
-3. `toUpperCase()` converts the string to uppercase.
-
-Result:
-
-```text
-HELLO
-```
-
-Now:
-
-```typescript
-printValue(25);
-```
-
-Execution:
-
-1. `typeof value === "string"` returns `false`.
-2. The `else` block executes.
-3. `toFixed(2)` formats the number to two decimal places.
-
-Result:
-
-```text
-25.00
-```
-
-**Important:** `toFixed(2)` returns a string containing the formatted number. It does not permanently change the original number.
-
 ## 3.7 Union Types with Three or More Types
 
 We can also use more than two types in a union.
@@ -1164,7 +1054,252 @@ Now TypeScript knows that `value` is a string inside the `if` block.
 
 ---
 
-# 4. Practice Exercises
+# 4. Type Narrowing and Type Guards
+
+This section expands the existing notes in Chapter 3. Add it after **3.6 What is Type Narrowing?**.
+
+## 4.1 Detailed Definition of Type Narrowing
+
+**Definition:**
+
+Type narrowing is a process in TypeScript that makes a variable's type more specific by using conditions and type checks.
+
+When a variable has a union type, it can contain values of more than one type. TypeScript cannot safely allow every type-specific operation until it knows which type the variable currently represents.
+
+TypeScript analyzes conditions such as `typeof`, `instanceof`, the `in` operator, equality checks, and truthiness checks. Inside the appropriate code block, it removes types that are no longer possible and works with the remaining, more specific type.
+
+**In simple words:** Type narrowing means reducing multiple possible types to a specific type after checking a condition.
+
+### Example
+
+```typescript
+function printValue(value: string | number): void {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(value.toFixed(2));
+  }
+}
+
+printValue("hello"); // HELLO
+printValue(25);      // 25.00
+```
+
+**Step-by-step explanation:**
+
+1. `value` can be either a `string` or a `number`.
+2. `typeof value === "string"` checks whether the current value is a string.
+3. Inside the `if` block, TypeScript narrows `value` to `string`.
+4. Inside the `else` block, TypeScript knows the remaining possible type is `number`.
+5. We can safely use methods that belong to the narrowed type.
+
+**Important:** Type narrowing does not change the actual value or convert it into another type. It helps TypeScript understand which type is possible at a particular point in the code.
+
+## 4.2 What is a Type Guard?
+
+**Definition:**
+
+A Type Guard is a condition, expression, or function that checks the type or structure of a value and provides TypeScript with information that can be used to narrow that value to a more specific type.
+
+Type Guards are especially useful when working with union types because a variable may represent more than one possible type. By checking the value before using type-specific properties or methods, we can write safer code and avoid invalid operations.
+
+TypeScript recognizes several forms of type guards, including `typeof`, `instanceof`, the `in` operator, equality checks, truthiness checks, and user-defined type guard functions.
+
+**In simple words:** A Type Guard checks what type of value we are dealing with, so TypeScript can safely narrow its type.
+
+### Common Type Guards
+
+#### 1. `typeof` Type Guard
+
+The `typeof` operator checks the runtime type of a value. It is commonly used with primitive types such as `string`, `number`, `boolean`, `bigint`, `symbol`, `undefined`, and `function`.
+
+```typescript
+function showValue(value: string | number): void {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(value.toFixed(2));
+  }
+}
+```
+
+Here, `typeof value === "string"` is the type guard.
+
+#### 2. `instanceof` Type Guard
+
+The `instanceof` operator checks whether an object was created from a particular class or constructor.
+
+```typescript
+class Admin {
+  manageUsers(): void {
+    console.log("Managing users...");
+  }
+}
+
+class Customer {
+  placeOrder(): void {
+    console.log("Placing an order...");
+  }
+}
+
+function handleUser(user: Admin | Customer): void {
+  if (user instanceof Admin) {
+    user.manageUsers();
+  } else {
+    user.placeOrder();
+  }
+}
+```
+
+Inside the `if` block, TypeScript knows that `user` is an `Admin`. Inside the `else` block, it knows that `user` is a `Customer`.
+
+#### 3. `in` Operator Type Guard
+
+The `in` operator checks whether a property exists in an object. It can help distinguish between object types that have different properties.
+
+```typescript
+type User = {
+  name: string;
+  email: string;
+};
+
+type AdminUser = {
+  name: string;
+  email: string;
+  permissions: string[];
+};
+
+function showUser(user: User | AdminUser): void {
+  if ("permissions" in user) {
+    console.log(user.permissions);
+  } else {
+    console.log(user.name);
+  }
+}
+```
+
+The expression `"permissions" in user` is the type guard. In the `if` block, TypeScript knows that `user` has the `permissions` property and narrows it to `AdminUser`.
+
+#### 4. Equality Type Guard
+
+Equality checks such as `===` and `!==` can narrow a variable when it is compared with a specific value.
+
+```typescript
+function printStatus(status: "success" | "error"): void {
+  if (status === "success") {
+    console.log("Operation completed!");
+  } else {
+    console.log("Something went wrong.");
+  }
+}
+```
+
+When `status === "success"` is true, TypeScript knows that `status` is the literal type `"success"`.
+
+#### 5. Truthiness Type Guard
+
+A truthiness check can narrow values by checking whether they are truthy or falsy.
+
+```typescript
+function printMessage(message: string | null): void {
+  if (message) {
+    console.log(message.toUpperCase());
+  } else {
+    console.log("No message provided.");
+  }
+}
+```
+
+Inside the `if` block, TypeScript knows that `message` is a string rather than `null`.
+
+#### 6. Custom Type Guard
+
+A custom type guard is a user-defined function that checks whether a value matches a particular type. Its return type uses the `is` keyword.
+
+```typescript
+type User = {
+  name: string;
+};
+
+type AdminUser = {
+  name: string;
+  permissions: string[];
+};
+
+function isAdmin(user: User | AdminUser): user is AdminUser {
+  return "permissions" in user;
+}
+
+function showDetails(user: User | AdminUser): void {
+  if (isAdmin(user)) {
+    console.log(user.permissions);
+  } else {
+    console.log(user.name);
+  }
+}
+```
+
+**Understanding `user is AdminUser`:**
+
+- `isAdmin()` returns a boolean value.
+- `user is AdminUser` is a type predicate in the function's return type.
+- When the function returns `true`, TypeScript treats `user` as `AdminUser` in the corresponding branch.
+- The function's implementation must perform a real check that supports the type it claims to identify.
+
+## 4.3 Type Guard vs Type Narrowing
+
+These two concepts are closely related, but they do not mean exactly the same thing.
+
+| Concept | Meaning |
+|---|---|
+| Type Guard | A check or function that helps TypeScript identify a value's type. |
+| Type Narrowing | The process of making a type more specific based on available information. |
+
+**Example:**
+
+```typescript
+function checkValue(value: string | number): void {
+  if (typeof value === "string") {
+    // Type Guard: typeof value === "string"
+    // Type Narrowing: value is now treated as string here.
+    console.log(value.toUpperCase());
+  }
+}
+```
+
+**Remember:**
+
+- Type Guard = The check.
+- Type Narrowing = The result of the check.
+- Type Guards are one common way to achieve type narrowing.
+
+## 4.4 Important Points to Remember
+
+1. Type Guards help TypeScript identify the type or structure of a value.
+2. Type Narrowing makes a variable's possible type more specific.
+3. `typeof` is commonly used to check primitive types.
+4. `instanceof` checks whether an object belongs to a class or constructor.
+5. The `in` operator checks whether a property exists in an object.
+6. Equality checks can narrow literal types.
+7. Truthiness checks can narrow values such as `string | null`.
+8. Custom type guards use a type predicate such as `value is SomeType`.
+9. Always perform a meaningful runtime check inside a custom type guard.
+10. Type narrowing does not convert or modify the original value.
+
+## 4.5 Quick Revision
+
+| Type Guard | Purpose | Example |
+|---|---|---|
+| `typeof` | Checks primitive types | `typeof value === "string"` |
+| `instanceof` | Checks an object's class/constructor | `value instanceof Admin` |
+| `in` | Checks whether an object has a property | `"name" in user` |
+| Equality | Checks a specific value | `status === "success"` |
+| Truthiness | Checks whether a value is truthy or falsy | `if (message)` |
+| Custom Type Guard | Defines a reusable type check | `function isAdmin(x): x is Admin` |
+
+**Important:** `toFixed(2)` returns a string containing the formatted number. It does not permanently change the original number.
+
+# 5. Practice Exercises
 
 Try solving these exercises yourself in VS Code before checking the solutions.
 
@@ -1302,7 +1437,7 @@ TYPESCRIPT
 
 ---
 
-# 5. Solutions
+# 6. Solutions
 
 Try all the exercises before looking at these solutions.
 
@@ -1443,7 +1578,7 @@ if (typeof value === "string") {
 
 ---
 
-# 6. Quick Revision
+# 7. Quick Revision
 
 Use this section to revise all three chapters quickly.
 
@@ -1483,6 +1618,7 @@ Use this section to revise all three chapters quickly.
 - [x] Chapter 1: Introduction to TypeScript
 - [x] Chapter 2: Type Annotation and Type Inference
 - [x] Chapter 3: Union Types and Any Type
+- [x] Chapter 4: Type Narrowing and Type Guards
 
 **Recommended Next Topics:**
 
