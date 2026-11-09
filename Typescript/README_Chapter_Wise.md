@@ -1,6 +1,6 @@
 # TypeScript — Beginner Study Notes
 
-A beginner-friendly guide to learning TypeScript, covering its introduction, type annotation, type inference, union types, and the `any` type.
+A beginner-friendly guide to learning TypeScript, covering its introduction, type annotation, type inference, union types, the `any` type, type narrowing, type guards, type assertion, and the `never` type.
 
 ---
 
@@ -10,9 +10,10 @@ A beginner-friendly guide to learning TypeScript, covering its introduction, typ
 2. [Type Annotation and Type Inference](#2-type-annotation-and-type-inference)
 3. [Union Types and Any Type](#3-union-types-and-any-type)
 4. [Type Narrowing and Type Guards](#4-type-narrowing-and-type-guards)
-5. [Practice Exercises](#5-practice-exercises)
-6. [Solutions](#6-solutions)
-7. [Quick Revision](#7-quick-revision)
+5. [Type Assertion and `never` Type](#5-type-assertion-and-never-type)
+6. [Practice Exercises](#6-practice-exercises)
+7. [Solutions](#7-solutions)
+8. [Quick Revision](#8-quick-revision)
 
 ---
 
@@ -1299,7 +1300,980 @@ function checkValue(value: string | number): void {
 
 **Important:** `toFixed(2)` returns a string containing the formatted number. It does not permanently change the original number.
 
-# 5. Practice Exercises
+---
+
+# 5. Type Assertion and `never` Type
+
+## 5.1 What is Type Assertion?
+
+**Definition:**
+
+Type Assertion is a TypeScript feature that allows a developer to tell TypeScript what type a value should be treated as.
+
+Sometimes TypeScript does not have enough information to determine the exact type of a value. The developer may know the actual type from the context. Type Assertion tells TypeScript:
+
+> "I know the type of this value better than you. Treat this value as this specific type."
+
+**Important:** Type Assertion does not change the actual value or its type at runtime. It only gives TypeScript information during development and compilation.
+
+### Example
+
+```typescript
+let value: unknown = "Hello";
+
+let message = value as string;
+
+console.log(message);
+```
+
+Here:
+
+```typescript
+value as string
+```
+
+means:
+
+> Treat `value` as a `string`.
+
+The actual value is still:
+
+```text
+Hello
+```
+
+Type Assertion does not convert the value into a string.
+
+---
+
+## 5.2 Why Do We Need Type Assertion?
+
+Consider this example:
+
+```typescript
+let value: unknown = "Hello";
+
+console.log(value.toUpperCase());
+```
+
+TypeScript reports an error because the type of `value` is `unknown`.
+
+TypeScript does not know whether the value is actually a string.
+
+We can use Type Assertion when we know from the context that the value is a string.
+
+```typescript
+let value: unknown = "Hello";
+
+let message = value as string;
+
+console.log(message.toUpperCase());
+```
+
+Now TypeScript treats `message` as a string.
+
+---
+
+## 5.3 Type Assertion Syntax
+
+The most common syntax is:
+
+```typescript
+value as Type
+```
+
+### Example
+
+```typescript
+let data: unknown = "Sabeer";
+
+let username = data as string;
+
+console.log(username);
+```
+
+### Alternative Syntax
+
+TypeScript also supports angle-bracket syntax:
+
+```typescript
+<Type>value
+```
+
+Example:
+
+```typescript
+let data: unknown = "Sabeer";
+
+let username = <string>data;
+
+console.log(username);
+```
+
+### Recommended Syntax
+
+The `as` syntax is generally recommended, especially when working with React and TSX.
+
+Why?
+
+Because angle brackets can conflict with JSX syntax.
+
+Therefore, prefer:
+
+```typescript
+const value = data as string;
+```
+
+instead of:
+
+```typescript
+const value = <string>data;
+```
+
+---
+
+## 5.4 Real-World Example: DOM Element
+
+Consider this HTML:
+
+```html
+<input id="username" type="text">
+```
+
+TypeScript:
+
+```typescript
+const input = document.getElementById("username") as HTMLInputElement;
+
+console.log(input.value);
+```
+
+Without Type Assertion, TypeScript sees:
+
+```typescript
+HTMLElement | null
+```
+
+After the assertion:
+
+```typescript
+HTMLInputElement
+```
+
+Therefore, we can safely access properties specific to an input element:
+
+```typescript
+input.value;
+input.checked;
+input.files;
+```
+
+### Login Form Example
+
+HTML:
+
+```html
+<input id="email" type="email">
+<input id="password" type="password">
+```
+
+TypeScript:
+
+```typescript
+const emailInput =
+  document.getElementById("email") as HTMLInputElement;
+
+const passwordInput =
+  document.getElementById("password") as HTMLInputElement;
+
+console.log(emailInput.value);
+console.log(passwordInput.value);
+```
+
+This type of Type Assertion is useful in:
+
+- Login forms
+- Signup forms
+- Search forms
+- Contact forms
+- Dashboard filters
+- Admin panels
+
+---
+
+## 5.5 Important Warning About Type Assertion
+
+Type Assertion does **not** verify that your assumption is correct.
+
+For example, suppose the HTML is actually:
+
+```html
+<div id="username"></div>
+```
+
+But we write:
+
+```typescript
+const input =
+  document.getElementById("username") as HTMLInputElement;
+```
+
+TypeScript trusts our assertion even though the actual element is a `div`.
+
+This can cause problems at runtime.
+
+Therefore, use Type Assertion only when you have a valid reason to know the actual type.
+
+### Simple Mental Model
+
+Think of Type Assertion as a promise from the developer to TypeScript:
+
+> "Trust me, I know what this value is."
+
+---
+
+## 5.6 Type Assertion with API Data
+
+Type Assertion is often used when working with API responses.
+
+Consider a custom `User` type:
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+```
+
+Suppose we have data:
+
+```typescript
+let apiData: unknown = {
+  id: 1,
+  name: "Sabeer",
+  email: "sabeer@example.com"
+};
+```
+
+We can assert the data as `User`:
+
+```typescript
+const user = apiData as User;
+
+console.log(user.name);
+console.log(user.email);
+```
+
+Type Assertion can be useful when working with:
+
+- REST APIs
+- JSON data
+- Backend responses
+- `localStorage`
+- Third-party APIs
+
+For example:
+
+```typescript
+const storedUser = localStorage.getItem("user");
+```
+
+`localStorage.getItem()` returns:
+
+```typescript
+string | null
+```
+
+Therefore, we should handle the possibility of `null` safely before parsing or asserting the resulting data.
+
+---
+
+## 5.7 Custom Type Assertion
+
+We can create our own types and use Type Assertion with them.
+
+```typescript
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
+const data: unknown = {
+  id: 101,
+  name: "Laptop",
+  price: 150000
+};
+
+const product = data as Product;
+
+console.log(product.name);
+console.log(product.price);
+```
+
+This can be useful in applications such as:
+
+- E-commerce systems
+- Product dashboards
+- Inventory systems
+- Business management systems
+
+---
+
+## 5.8 Type Assertion vs Type Narrowing
+
+Type Assertion and Type Narrowing are related, but they are different concepts.
+
+### Type Narrowing
+
+Type Narrowing uses logic and conditions to help TypeScript determine the type.
+
+```typescript
+function printValue(value: string | number): void {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  }
+}
+```
+
+Here TypeScript narrows:
+
+```typescript
+string | number
+```
+
+to:
+
+```typescript
+string
+```
+
+inside the `if` block.
+
+### Type Assertion
+
+Type Assertion tells TypeScript which type to use:
+
+```typescript
+const value = data as string;
+```
+
+### Remember
+
+| Concept | Meaning |
+|---|---|
+| Type Narrowing | TypeScript determines the type using logic and checks. |
+| Type Assertion | The developer tells TypeScript what type to treat the value as. |
+
+**Simple mental model:**
+
+> Type Narrowing = TypeScript figures it out.
+
+> Type Assertion = Developer tells TypeScript.
+
+---
+
+# 5.9 What is `never` Type?
+
+**Definition:**
+
+The `never` type represents values that never occur.
+
+It is used when something can never produce a value or can never complete normally.
+
+A function commonly has a `never` return type when it:
+
+1. Always throws an error.
+2. Runs forever.
+3. Reaches an impossible state.
+
+### Example
+
+```typescript
+function throwError(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+This function never successfully returns a value because it always throws an error.
+
+---
+
+## 5.10 `never` vs `void`
+
+`void` and `never` are different.
+
+### `void`
+
+A `void` function does not return a meaningful value, but it finishes normally.
+
+```typescript
+function logout(): void {
+  console.log("User logged out");
+}
+```
+
+The function finishes execution normally.
+
+### `never`
+
+A `never` function never completes normally.
+
+```typescript
+function crash(): never {
+  throw new Error("Application crashed");
+}
+```
+
+The function throws an error and does not continue normally.
+
+### Mental Model
+
+```text
+void
+↓
+Returns nothing
+↓
+Finishes normally
+```
+
+```text
+never
+↓
+Never returns
+↓
+Does not finish normally
+```
+
+---
+
+## 5.11 Real-World Example: Authentication Error
+
+```typescript
+function unauthorized(): never {
+  throw new Error("You are not authorized.");
+}
+
+function accessDashboard(isLoggedIn: boolean): string {
+  if (!isLoggedIn) {
+    unauthorized();
+  }
+
+  return "Welcome to the Dashboard";
+}
+```
+
+If `isLoggedIn` is `false`:
+
+```typescript
+unauthorized();
+```
+
+throws an error and stops execution.
+
+This concept is useful in:
+
+- Authentication
+- Authorization
+- Protected routes
+- Admin dashboards
+- Permission systems
+- Error handling
+
+---
+
+## 5.12 Real-World Example: Validation
+
+```typescript
+function validationError(message: string): never {
+  throw new Error(message);
+}
+
+function validateEmail(email: string): string {
+  if (!email.includes("@")) {
+    validationError("Invalid email address");
+  }
+
+  return email;
+}
+```
+
+If the email is invalid:
+
+```typescript
+validationError(...)
+```
+
+throws an error and stops execution.
+
+If the email is valid, the function continues and returns the email.
+
+This pattern is useful for:
+
+- Form validation
+- User registration
+- Login validation
+- Data validation
+- Application logic
+
+---
+
+## 5.13 Infinite Loop
+
+A function that never stops can also have the `never` return type.
+
+```typescript
+function keepServerRunning(): never {
+  while (true) {
+    console.log("Server is running...");
+  }
+}
+```
+
+The function never reaches a return statement because the loop continues forever.
+
+**Important:** Do not run an infinite loop directly during normal practice unless you know how to stop the process.
+
+---
+
+## 5.14 Exhaustive Checking with `never`
+
+The `never` type is also useful for exhaustive checking.
+
+Consider:
+
+```typescript
+type Role = "admin" | "staff" | "customer";
+
+function getAccess(role: Role): string {
+  switch (role) {
+    case "admin":
+      return "Full Access";
+
+    case "staff":
+      return "Limited Access";
+
+    case "customer":
+      return "Customer Access";
+  }
+}
+```
+
+Now imagine we later add:
+
+```typescript
+"manager"
+```
+
+to the `Role` union.
+
+If we forget to add a `manager` case, we can use `never` to help TypeScript detect the missing case.
+
+### `assertNever()` Helper
+
+```typescript
+function assertNever(value: never): never {
+  throw new Error(`Unexpected value: ${value}`);
+}
+```
+
+Now use it in the `default` case:
+
+```typescript
+function getAccess(role: Role): string {
+  switch (role) {
+    case "admin":
+      return "Full Access";
+
+    case "staff":
+      return "Limited Access";
+
+    case "customer":
+      return "Customer Access";
+
+    default:
+      return assertNever(role);
+  }
+}
+```
+
+If the `Role` union is later changed to include:
+
+```typescript
+"manager"
+```
+
+and we forget to handle it in the `switch`, TypeScript can report an error because `role` is no longer `never`.
+
+---
+
+## 5.15 Why is Exhaustive Checking Useful?
+
+Exhaustive checking helps prevent bugs when an application has many possible states.
+
+For example:
+
+- Authentication roles
+- User permissions
+- Order statuses
+- Payment statuses
+- API states
+- Error states
+- Application states
+- State management
+
+If a new case is added to a union type, TypeScript can help us remember to handle it.
+
+The `never` type therefore acts as a safety check for situations that should be impossible.
+
+---
+
+## 5.16 Real-World Example: Order Status
+
+Consider an e-commerce or business management system:
+
+```typescript
+type OrderStatus =
+  | "pending"
+  | "processing"
+  | "completed"
+  | "cancelled";
+```
+
+We can handle each status:
+
+```typescript
+function getOrderMessage(status: OrderStatus): string {
+  switch (status) {
+    case "pending":
+      return "Order is waiting for processing.";
+
+    case "processing":
+      return "Order is being processed.";
+
+    case "completed":
+      return "Order has been completed.";
+
+    case "cancelled":
+      return "Order has been cancelled.";
+
+    default:
+      return assertNever(status);
+  }
+}
+```
+
+If we later add:
+
+```typescript
+"refunded"
+```
+
+to `OrderStatus`, TypeScript can help us identify that the new status has not been handled.
+
+This is a practical example of exhaustive checking in:
+
+- E-commerce applications
+- Order management systems
+- Business management systems
+- Payment systems
+- Admin dashboards
+
+---
+
+## 5.17 `unknown`, Type Assertion, and `never`
+
+These three concepts are different.
+
+### `unknown`
+
+Means:
+
+> "I don't know the type of this value yet."
+
+```typescript
+let data: unknown;
+```
+
+We must check the type before performing type-specific operations.
+
+### Type Assertion
+
+Means:
+
+> "I know what this value is. Treat it as this type."
+
+```typescript
+const user = data as User;
+```
+
+### `never`
+
+Means:
+
+> "This situation/value should never occur."
+
+```typescript
+function fail(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+### Quick Comparison
+
+| Concept | Meaning |
+|---|---|
+| `unknown` | Type is not known yet. |
+| Type Assertion | Developer tells TypeScript what type to treat the value as. |
+| `never` | Represents a situation that never occurs or never completes normally. |
+
+---
+
+## 5.18 Quick Revision
+
+### Type Assertion
+
+```typescript
+const input =
+  document.getElementById("email") as HTMLInputElement;
+```
+
+Type Assertion tells TypeScript to treat the value as a specific type.
+
+It does **not** change the runtime value.
+
+### `never`
+
+```typescript
+function fail(message: string): never {
+  throw new Error(message);
+}
+```
+
+The `never` type represents something that never completes normally.
+
+### `void`
+
+```typescript
+function logout(): void {
+  console.log("Logged out");
+}
+```
+
+`void` means the function does not return a meaningful value, but it can finish normally.
+
+### Important Difference
+
+```text
+Type Assertion
+→ Developer tells TypeScript the expected type.
+
+Type Narrowing
+→ TypeScript determines a more specific type using checks.
+
+void
+→ Function finishes normally but returns no meaningful value.
+
+never
+→ Function never completes normally.
+```
+
+---
+
+## 5.19 Practice Exercises for Type Assertion and `never`
+
+Try solving these exercises yourself in VS Code before checking the solutions.
+
+### Exercise 11: Basic Type Assertion
+
+Create an `unknown` variable containing:
+
+```text
+"Hello TypeScript"
+```
+
+Use Type Assertion to treat it as a `string`.
+
+Then call:
+
+```typescript
+toUpperCase()
+```
+
+Expected output:
+
+```text
+HELLO TYPESCRIPT
+```
+
+### Exercise 12: DOM Type Assertion
+
+Create this HTML:
+
+```html
+<input id="email" type="email">
+```
+
+Use Type Assertion to tell TypeScript that the element is an:
+
+```typescript
+HTMLInputElement
+```
+
+Then access:
+
+```typescript
+input.value
+```
+
+### Exercise 13: Custom User Type Assertion
+
+Create:
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+```
+
+Create an `unknown` object containing user data.
+
+Use Type Assertion to treat the object as `User`.
+
+Display:
+
+- User name
+- User email
+
+### Exercise 14: API Response Assertion
+
+Create an `unknown` API-like response:
+
+```typescript
+{
+  id: 1,
+  name: "Sabeer",
+  email: "sabeer@example.com"
+}
+```
+
+Create a `User` type and use Type Assertion to treat the response as a `User`.
+
+Display the user's name and email.
+
+### Exercise 15: `never` Error Function
+
+Create a function:
+
+```typescript
+showError(message: string): never
+```
+
+The function should throw an error using the provided message.
+
+### Exercise 16: Authentication with `never`
+
+Create a function that checks whether a user is logged in.
+
+If the user is not logged in:
+
+- Call a `never` function.
+- Throw an authentication error.
+
+If the user is logged in:
+
+```text
+Access granted
+```
+
+should be returned.
+
+### Exercise 17: Validation with `never`
+
+Create a function named:
+
+```typescript
+validateAge()
+```
+
+If the age is less than `18`, call a `never` function that throws:
+
+```text
+You must be 18 or older.
+```
+
+Otherwise return:
+
+```text
+Access allowed
+```
+
+### Exercise 18: Infinite Loop
+
+Create:
+
+```typescript
+function startProcess(): never
+```
+
+Inside the function, create an infinite loop.
+
+Do not run the function directly unless you know how to stop the process.
+
+### Exercise 19: Exhaustive Checking
+
+Create:
+
+```typescript
+type Status = "pending" | "approved" | "rejected";
+```
+
+Create a function that handles all three statuses using `switch`.
+
+Create an:
+
+```typescript
+assertNever()
+```
+
+function and use it in the `default` case.
+
+### Exercise 20: Order Status
+
+Create:
+
+```typescript
+type OrderStatus =
+  | "pending"
+  | "processing"
+  | "completed"
+  | "cancelled";
+```
+
+Create a function that handles every status.
+
+Use:
+
+```typescript
+assertNever()
+```
+
+in the `default` case.
+
+Then add:
+
+```typescript
+"refunded"
+```
+
+to the union and observe what happens if you do not add a corresponding `case`.
+
+---
+
+# 6. Practice Exercises
 
 Try solving these exercises yourself in VS Code before checking the solutions.
 
@@ -1437,7 +2411,7 @@ TYPESCRIPT
 
 ---
 
-# 6. Solutions
+# 7. Solutions
 
 Try all the exercises before looking at these solutions.
 
@@ -1576,11 +2550,213 @@ if (typeof value === "string") {
 }
 ```
 
+## Solution 11: Basic Type Assertion
+
+```typescript
+let value: unknown = "Hello TypeScript";
+
+const message = value as string;
+
+console.log(message.toUpperCase());
+```
+
+Output:
+
+```text
+HELLO TYPESCRIPT
+```
+
+## Solution 12: DOM Type Assertion
+
+```typescript
+const input =
+  document.getElementById("email") as HTMLInputElement;
+
+console.log(input.value);
+```
+
+## Solution 13: Custom User Type Assertion
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+const data: unknown = {
+  id: 1,
+  name: "Sabeer",
+  email: "sabeer@example.com"
+};
+
+const user = data as User;
+
+console.log(user.name);
+console.log(user.email);
+```
+
+## Solution 14: API Response Assertion
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+const apiResponse: unknown = {
+  id: 1,
+  name: "Sabeer",
+  email: "sabeer@example.com"
+};
+
+const user = apiResponse as User;
+
+console.log(user.name);
+console.log(user.email);
+```
+
+## Solution 15: `never` Error Function
+
+```typescript
+function showError(message: string): never {
+  throw new Error(message);
+}
+
+showError("Something went wrong.");
+```
+
+## Solution 16: Authentication with `never`
+
+```typescript
+function unauthorized(): never {
+  throw new Error("You are not authorized.");
+}
+
+function checkAuthentication(isLoggedIn: boolean): string {
+  if (!isLoggedIn) {
+    unauthorized();
+  }
+
+  return "Access granted";
+}
+
+console.log(checkAuthentication(true));
+```
+
+## Solution 17: Validation with `never`
+
+```typescript
+function ageError(): never {
+  throw new Error("You must be 18 or older.");
+}
+
+function validateAge(age: number): string {
+  if (age < 18) {
+    ageError();
+  }
+
+  return "Access allowed";
+}
+
+console.log(validateAge(20));
+```
+
+## Solution 18: Infinite Loop
+
+```typescript
+function startProcess(): never {
+  while (true) {
+    console.log("Process is running...");
+  }
+}
+```
+
+Do not call the function directly unless you know how to stop the process.
+
+## Solution 19: Exhaustive Checking
+
+```typescript
+type Status = "pending" | "approved" | "rejected";
+
+function assertNever(value: never): never {
+  throw new Error(`Unexpected value: ${value}`);
+}
+
+function getStatusMessage(status: Status): string {
+  switch (status) {
+    case "pending":
+      return "Status is pending.";
+
+    case "approved":
+      return "Status is approved.";
+
+    case "rejected":
+      return "Status is rejected.";
+
+    default:
+      return assertNever(status);
+  }
+}
+
+console.log(getStatusMessage("pending"));
+```
+
+## Solution 20: Order Status
+
+```typescript
+type OrderStatus =
+  | "pending"
+  | "processing"
+  | "completed"
+  | "cancelled";
+
+function assertNever(value: never): never {
+  throw new Error(`Unexpected value: ${value}`);
+}
+
+function getOrderMessage(status: OrderStatus): string {
+  switch (status) {
+    case "pending":
+      return "Order is waiting for processing.";
+
+    case "processing":
+      return "Order is being processed.";
+
+    case "completed":
+      return "Order has been completed.";
+
+    case "cancelled":
+      return "Order has been cancelled.";
+
+    default:
+      return assertNever(status);
+  }
+}
+
+console.log(getOrderMessage("pending"));
+```
+
+If you add:
+
+```typescript
+"refunded"
+```
+
+to `OrderStatus` but do not add a `case` for it, TypeScript can report an error at:
+
+```typescript
+assertNever(status);
+```
+
+This is the benefit of exhaustive checking.
+
 ---
 
-# 7. Quick Revision
+# 8. Quick Revision
 
-Use this section to revise all three chapters quickly.
+Use this section to revise all five chapters quickly.
 
 | Concept | Meaning | Example |
 |---|---|---|
@@ -1590,9 +2766,15 @@ Use this section to revise all three chapters quickly.
 | Union Type | Allows specified multiple types | `string \| number` |
 | `typeof` | Checks the type of a value at runtime | `typeof value` |
 | Type Narrowing | Makes a type more specific after checking | `if (typeof value === "string")` |
+| Type Guard | A check that helps TypeScript identify a value's type | `typeof value === "string"` |
+| `instanceof` | Checks an object's class/constructor | `value instanceof Admin` |
+| `in` | Checks whether an object has a property | `"name" in user` |
 | `any` | Allows almost any type and disables most type checking | `let value: any = 100;` |
 | `unknown` | Accepts any type but requires checking before type-specific operations | `let value: unknown;` |
 | `void` | Indicates no meaningful function return value | `function greet(): void {}` |
+| Type Assertion | Tells TypeScript to treat a value as a specific type | `value as string` |
+| `never` | Represents a value/situation that never occurs or never completes normally | `function fail(): never { throw new Error(); }` |
+| `assertNever()` | Helps perform exhaustive checking | `return assertNever(status);` |
 
 ## Important Rules to Remember
 
@@ -1605,9 +2787,21 @@ Use this section to revise all three chapters quickly.
 7. The pipe symbol (`|`) means OR.
 8. Use `typeof` to check primitive types.
 9. Type narrowing allows safe operations on a more specific type.
-10. `any` disables most type checking and should be used carefully.
-11. `unknown` is generally safer than `any`.
-12. `void` is used when a function does not return a meaningful value.
+10. Type Guards help TypeScript identify the type or structure of a value.
+11. Type Narrowing is the process of making a type more specific.
+12. `any` disables most type checking and should be used carefully.
+13. `unknown` is generally safer than `any`.
+14. `void` is used when a function does not return a meaningful value.
+15. Type Assertion tells TypeScript to treat a value as a specific type.
+16. Type Assertion does not change or convert the actual runtime value.
+17. Use Type Assertion only when you have a valid reason to know the actual type.
+18. `never` represents values or situations that should never occur.
+19. A `never` function does not complete normally.
+20. A `void` function can finish normally even though it does not return a meaningful value.
+21. `assertNever()` can be used for exhaustive checking.
+22. Exhaustive checking helps detect missing cases when working with union types.
+23. Type Assertion and Type Narrowing are different concepts.
+24. Type Narrowing uses checks and logic, while Type Assertion is a developer-provided instruction to TypeScript.
 
 ---
 
@@ -1619,6 +2813,7 @@ Use this section to revise all three chapters quickly.
 - [x] Chapter 2: Type Annotation and Type Inference
 - [x] Chapter 3: Union Types and Any Type
 - [x] Chapter 4: Type Narrowing and Type Guards
+- [x] Chapter 5: Type Assertion and `never` Type
 
 **Recommended Next Topics:**
 
