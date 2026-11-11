@@ -1,7 +1,73 @@
 "use strict";
 // Type Narrowing and Type Guards in TypeScript
 Object.defineProperty(exports, "__esModule", { value: true });
-// Type Narrowing: Type Narrowing is a TypeScript feature that helps identify and reduce a variable's possible types to a more specific type using conditions.
+// ========================================
+// Type Narrowing in TypeScript
+// ========================================
+// Definition:
+// Type Narrowing is a process in TypeScript that allows the
+// TypeScript compiler to reduce a variable's type from multiple
+// possible types to a more specific type based on certain checks.
+//
+// It is especially useful when working with Union Types because
+// a variable can hold values of different types.
+//
+// TypeScript uses conditions and checks to determine which type
+// a variable currently represents within a specific block of code.
+//
+// Once TypeScript identifies the specific type, we can safely
+// access its properties and methods without causing type errors.
+//
+// Common Techniques Used for Type Narrowing:
+// 1. typeof       - Checks the type of a primitive value.
+// 2. instanceof  - Checks whether an object belongs to a class.
+// 3. in          - Checks whether a property exists in an object.
+// 4. Equality    - Uses === or !== to compare values.
+// 5. Truthiness  - Checks whether a value is truthy or falsy.
+// 6. Custom Type Guards - Uses user-defined functions to narrow types.
+//
+// Important:
+// Type Narrowing does not change the actual value or its
+// runtime type. It only helps TypeScript understand the
+// more specific type of a variable during code analysis.
+//
+// In simple words:
+// Type Narrowing means reducing multiple possible types
+// into one specific type after checking a condition.
+// ========================================
+// Type Guards in TypeScript
+// ========================================
+// Definition:
+// Type Guards are techniques in TypeScript that allow us to
+// check the actual type of a variable at runtime.
+//
+// They help TypeScript identify and narrow down a variable's
+// type within a specific block of code.
+//
+// When working with union types, Type Guards help us determine
+// which type of value we are dealing with before performing
+// type-specific operations.
+//
+// Type Guards improve type safety and prevent errors by ensuring
+// that we only perform operations that are valid for a specific type.
+//
+// Common Type Guards:
+// 1. typeof      - Checks primitive types (string, number, boolean).
+// 2. instanceof - Checks whether an object belongs to a class.
+// 3. in         - Checks whether a property exists in an object.
+// 4. Equality   - Checks values using ===, !==, etc.
+// 5. Custom Type Guards - User-defined functions using the
+//    "is" keyword to identify a specific type.
+//
+// Important:
+// Type Guard is the checking technique.
+// Type Narrowing is the process of reducing a variable's
+// possible types after a successful type check.
+//
+// In simple words:
+// Type Guards help TypeScript understand what type of value
+// we are working with, so we can safely use its properties
+// and methods.
 // 1. String or Number
 // let value: string | number = "Hello TypeScript";
 // if (typeof value === "string") {
