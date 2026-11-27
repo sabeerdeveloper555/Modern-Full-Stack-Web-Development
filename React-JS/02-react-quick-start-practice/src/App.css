@@ -1,0 +1,26 @@
+.user-title{
+  color: red;
+  font-size: 30px;
+}
+.user-name{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-role{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.user-age{
+  font-size: 14px;
+}
+
+.my-btn{
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
