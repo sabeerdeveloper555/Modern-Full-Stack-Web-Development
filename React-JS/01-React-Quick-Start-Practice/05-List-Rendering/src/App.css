@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.student-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #b2b2b3;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.student-heading {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.student-card{
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #b2b2b3;
+}
+
+.student-name{
+  font-size: 20px;
+}
+
+.student-course{
+  color: #666;
+  font-size: 14px;
+}
